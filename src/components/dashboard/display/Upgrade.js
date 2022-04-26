@@ -128,14 +128,34 @@ const Upgrade = (prop) => {
     )
   }
 
+  const changeStrSeqSwap = () => {
+    let prefix = "";
+    if (selectedGeneIndex != 0)
+    {prefix = prop.strSeq.substring(0, ((selectedGeneIndex-1)*3)+3)}
+    let edited
+    if (selectedGlyph != "0")
+    {
+      let glyphStr = glyphIds.find(({id}) => id === selectedGlyph)
+      edited = (0 + parseInt(glyphStr.points)).toString()
+    } else {
+      edited = (0).toString()
+    }
+    edited = (parseInt(edited) + parseInt(usedPoints)).toString()
+    for (let twj = edited.length; twj < 3 ;twj++) {edited = "0" + edited}
+    let suffix =prop.strSeq.substring(((selectedGeneIndex)*3)+3,54);
+     return (prefix+edited+suffix)
+  }
+
   const upgradedGene = () => {
     let pGene 
+    let pStr
     if (selectedTrait != "0"){
       pGene = changeGeneSeq();
+      pStr = changeStrSeqSwap
     } else {
       pGene = prop.geneSeq
+      pStr = changeStrSeq();
     }
-    let pStr = changeStrSeq();
     if (parseInt(strDissasermbler(pStr, selectedGeneIndex * 3))> 100){
       return (
         <>
@@ -518,7 +538,7 @@ const Upgrade = (prop) => {
     let temp = parseInt(glyph.type)
     let tempgeneindex = selectedGeneIndex
     if (selectedGeneIndex % 2 == 1) 
-    {tempgeneindex--}
+    {tempgeneindex--} 
 
       return (parseInt(Math.floor(temp/(2**((18-tempgeneindex)/2)))%2) )
   }

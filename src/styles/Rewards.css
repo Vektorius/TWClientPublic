@@ -45,16 +45,25 @@ cursor: pointer;
 #ActiveRewardsAlt{
     border: 3px outset rgba(39, 53, 39, 0.705);
     background-color: rgba(47, 92, 45, 0.281);
+    left:556px;
+    height: 280px;
+    width: 280px;
 
   }
   
 #PendingRewardsAlt{
     border: 3px outset rgba(83, 36, 36, 0.705);
     background-color: rgba(100, 36, 36, 0.281);
+    left:556px;
+    height: 280px;
+    width: 280px;
 
   }
   
 #Contest{
+    width: 280px;
+    height: 280px;
+    left:148px;
     line-height: 30px;
     border-radius: 15px;
     background-color: rgba(14, 2, 20, 0.658);

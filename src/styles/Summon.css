@@ -3,7 +3,7 @@
     border: 3px outset rgba(110, 110, 110, 0.705);
     width: 200px;
     height: 494px;
-    left: 20px;
+    left: 30px;
     top: 296px;
     background-color: rgba(85, 85, 85, 0.281);
 }
@@ -34,7 +34,7 @@
     width: 200px;
     top: 296px;
     height: 494px;
-    left: 235px;
+    left: 240px;
 }
 
 #TraitSelector ul {
@@ -97,6 +97,6 @@
 #SummonHeaderM {
     position: absolute;
     top: 265px;
-    left: 34px;
+    left: 50px;
     font-size: 20px;
 }
