@@ -4,7 +4,7 @@
   }
 
   #tombstone_canvas {
-    position: absolute;
+    position: fixed;
     margin-top: 1vh;
     width: 1008px;
     height: 834px;
