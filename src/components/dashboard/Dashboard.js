@@ -12,7 +12,6 @@ const Dashboard = (prop) => {
 
 
   useEffect(() => {   
-    console.log("Background drawn");
     drawSingleCanvas(background_default, 'dashboard_canvas');
     drawSingleCanvas(tombstone_default, 'tombstone_canvas');
   }, [settings]);

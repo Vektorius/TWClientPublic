@@ -48,7 +48,6 @@ const TombstoneMeniu = (prop) => {
     const goodFetcher = () => {
         contract.methods.balanceOf(prop.address).call(async(err, result) => {   
           for (let i = 0; i < result; i++) {
-            console.log(i)
             fetcherRetry(i)
           }
         });
@@ -59,9 +58,7 @@ const TombstoneMeniu = (prop) => {
           if (!err) {
             contract.methods.tokenURI( result).call( async(err, result) => {
               if (!err) {
-                console.log(result)
                 let tokenMetadata = await fetchMetadata( result);
-                console.log(tokenMetadata)
                 setSkeletoons((skeletoonList) => [...skeletoonList, tokenMetadata]);
               } else {
                 fetcherRetry(tokenID)
@@ -160,7 +157,6 @@ const TombstoneMeniu = (prop) => {
             key={token.id}
             onClick={() => {
               setSelectedSkeletoonId(skeletoons.map((object) => object.id).indexOf(token.id));
-              console.log(token.name + " " + token.id);
             }}
           >
             {token.name}
@@ -235,7 +231,6 @@ const TombstoneMeniu = (prop) => {
       }
 
     useEffect(() => {
-        console.log("Meniu drawn");
         drawSingleCanvas(meniu_default, 'tombstoneMeniu_canvas');
     }, [meniuConstructor]);
 
@@ -297,7 +292,6 @@ const TombstoneMeniu = (prop) => {
 
     useEffect(() => {
         if (areSkeletoonsFetched == 0 && skeletoons.length === 1) {
-            console.log(skeletoons.length)
             setSelectedSkeletoonId(0)
             setFetch(1)
         }
@@ -305,7 +299,6 @@ const TombstoneMeniu = (prop) => {
 
     useEffect(() => {
         if (typeof gene === "string" && typeof strength === "string"){
-            console.log("FFF:" + gene, strength)
             var myCanvas = document.getElementById('skeletoon_profile_canvas');
             myCanvas.width = 2000;
             myCanvas.height = 2000;

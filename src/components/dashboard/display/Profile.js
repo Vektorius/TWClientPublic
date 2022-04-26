@@ -83,7 +83,6 @@ const Profile = (prop) => {
         RewardString += tempString;
       } 
     }
-    console.log(totalRewards);
     return RewardString;
   };
 

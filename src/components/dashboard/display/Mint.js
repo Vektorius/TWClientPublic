@@ -64,7 +64,6 @@ const Mint = (prop) => {
   const balanceSPSK = () => {
     contractSPSK.methods.totalSupply().call((err,result) => {
       if(!err){
-        console.log(result)
         setSPSKsupply(result)
       } else {
         console.log(err)

@@ -170,8 +170,6 @@ const Summon = (prop) => {
       if (temp.length < 3)
       {temp = "0"+temp}
     }
-    console.log(temp)
-    console.log(typeof temp)
       return (TraitMap[temp]["1"][3] == selectedGeneIndex)
   }
 
@@ -246,7 +244,6 @@ const Summon = (prop) => {
     for (let i =0; i<9;i++){
       if (Arr[i].id !== null) {
         counter++;
-        console.log(counter)
       }
     }
     let tempApproval = approvalState

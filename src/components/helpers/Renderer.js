@@ -46,10 +46,8 @@ export const drawSkeletoonFull = (genes, strength, canvasID, indexer, downscaleT
             if (singleStrD >=  parseInt(TraitMap[singleGeneWhole][j.toString()][1])) {
                 flaggedWhole = true;
                 img.src = imageURL + TraitMap[singleGeneWhole][j.toString()][0] + ".png"
-                console.log(img.src)
                 img.setAttribute('crossOrigin', '');
                 img.onload = function(){
-                    console.log(img);
                     ctx.drawImage(img, 0,0);               
                     i++
                     if (i < 9) {                
@@ -72,7 +70,6 @@ export const drawSkeletoonFull = (genes, strength, canvasID, indexer, downscaleT
                 img.src = imageURL + TraitMap[singleGeneD][j.toString()][0] + ".png"
                 img.setAttribute('crossOrigin', '');
                 img.onload = function(){
-                    console.log(img);
                     ctx.drawImage(img, 0,0);               
                     i++
                     if (i < 9) {                
@@ -101,12 +98,12 @@ function downscaleRecursion(canvasID, downscaleTimes, finalScale) {
     var myCanvas = document.getElementById(canvasID);
     let counter = downscaleTimes - 1
     if (0 < downscaleTimes) {
-        console.log("Rescaling")
+
         resample_single(myCanvas, (myCanvas.width)/2, (myCanvas.height)/2, true)
         downscaleRecursion(canvasID, counter, finalScale)
     }
     if (0 == downscaleTimes) {
-        console.log("Rescaling")
+
         resample_single(myCanvas, finalScale, finalScale, true)   
      }
 }

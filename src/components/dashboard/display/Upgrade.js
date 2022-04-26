@@ -148,7 +148,6 @@ const Upgrade = (prop) => {
         </>
       )
     } else {
-      console.log("Upgraded Gene")
       return (
         <>
         <div id={"UpgradedGeneHeader"}>{"Upgraded Gene"}</div>
@@ -231,7 +230,6 @@ const Upgrade = (prop) => {
       pGene = changeGeneSeq();
     }
     pStr = changeStrSeq();
-    console.log(pStr)
     drawSkeletoonFull(pGene, pStr, 'skeletoon_preview_canvas', 0, 0, 1000)
   }
 
@@ -501,8 +499,6 @@ const Upgrade = (prop) => {
       if (temp.length < 3)
       {temp = "0"+temp}
     }
-    console.log(temp)
-    console.log(typeof temp)
       return (TraitMap[temp]["1"][3] == selectedGeneIndex || selectedGeneIndex % 2 == 1)
   }
 
@@ -524,8 +520,6 @@ const Upgrade = (prop) => {
     if (selectedGeneIndex % 2 == 1) 
     {tempgeneindex--} else
 
-    console.log(temp)
-    console.log(typeof temp)
       return (parseInt(Math.floor(temp/(2**((18-tempgeneindex)/2)))%2) )
   }
 
@@ -599,7 +593,6 @@ const Upgrade = (prop) => {
       {edited = "0"+edited}
     }
     let suffix =prop.geneSeq.substring(((selectedGeneIndex)*3)+3,54);
-    console.log("PREFIX: " + prefix + " MID: "+ edited + " SUFFIX: " + suffix)
      return (prefix+edited+suffix)
   }
 
@@ -630,8 +623,6 @@ const Upgrade = (prop) => {
     }
     if (selectedGlyph != "0" && tempApproval < 2){
       glyphContract.methods.isApprovedForAll(prop.address, aTWLogic).call( async(err, result) => {
-        console.log(result)
-        console.log(typeof result)
         if (result == true) {
           setApprovalState(tempApproval + 2)
         }

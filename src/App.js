@@ -22,7 +22,6 @@ function App() {
 
     try {
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-      console.log("Found an account! Address: ", accounts[0]);
       setCurrentAccount(accounts[0]);
       getChainId();
     } catch (err) {

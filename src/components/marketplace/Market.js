@@ -191,7 +191,6 @@ const Market = (prop) => {
           let market = {skeletoons: [], traits: [], glyphs: []}
           cMarket.methods.fetchMarketItems().call(async (err,result) => {
               if (!err){
-                console.log(result)
                 
                 let marketItems = result
                 //---------------------------------------------------------- && (item[6] === "0")
@@ -201,7 +200,6 @@ const Market = (prop) => {
                              
                 contract.methods.getSkeletoonPropertiesBatch(skeletoonsMarket).call( async (err,result) => {
                     for (let i = 0; i < result.length; i= i+3){
-                        console.log (result)
                         let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i], price:skeletoonsPrice[i]}
                         market.skeletoons = [...market.skeletoons, temp];
                     }
@@ -249,7 +247,6 @@ const Market = (prop) => {
         let market = {skeletoons: [], traits: [], glyphs: []}
         cMarket.methods.fetchMarketItems().call(async (err,result) => {
             if (!err){
-                console.log(result)
                 
                 let marketItems = result
                 //---------------------------------------------------------- && (item[6] === "0")
@@ -261,7 +258,6 @@ const Market = (prop) => {
                
                 contract.methods.getSkeletoonPropertiesBatch(skeletoonsMarket).call( async (err,result) => {
                     for (let i = 0; i < result.length; i= i+3){
-                        console.log (result)
                         let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i], price:skeletoonsPrice[i]}
                         market.skeletoons = [...market.skeletoons, temp];
                     }
@@ -292,8 +288,7 @@ const Market = (prop) => {
                 let tempFilterStr = (filter.skeletoon[i].strength)
                 let tempGene = parseInt(padder(skele.gene).substring(i*3,(i*3)+3))
                 let tempStr = parseInt(padder(skele.str).substring(i*3,(i*3)+3))
-               // console.log("gene:" + tempFilterGene + "str" + tempFilterStr)
-               // console.log("TEMP gene:" + tempGene + "str" + tempStr)
+
                 if (tempFilterGene === null) {
                     passFail++;
                 } else 
@@ -311,7 +306,7 @@ const Market = (prop) => {
                     passFail++;
                 }}
             }
-            console.log(passFail)
+
             return (passFail === 36)              
           }
         
@@ -330,11 +325,11 @@ const Market = (prop) => {
                 itemTemp = listedCopy
             }
             //FIX img src
-            console.log(itemTemp)
+
             let itemsFiltered = {skeletoons: [], traits: [], glyphs: []}
             itemsFiltered.skeletoons = itemTemp.skeletoons.filter(skeletoon => skeletoonFilterer(skeletoon))
             //itemTemp.skeletoons = itemsFiltered.skeletoons
-            console.log(itemsFiltered)
+
             if (selectedDisplay === "Market"){
                 itemsFiltered.traits = marketCopy.traits
                 itemsFiltered.glyphs = marketCopy.glyphs
@@ -348,7 +343,6 @@ const Market = (prop) => {
                 itemsFiltered.glyphs = listedCopy.glyphs
             }
             setFiltered(itemsFiltered)
-            console.log( filtered)
         }
 
         //TEMP
@@ -460,7 +454,6 @@ const Market = (prop) => {
     }
 
     function traitFilterer(trait){
-        console.log(trait.typeId)
         return (parseInt(trait.typeId) === parseInt(filter.trait.type))              
       }
     
@@ -479,11 +472,9 @@ const Market = (prop) => {
             itemTemp = listedCopy
         }
         //FIX img src
-        console.log(itemTemp)
         let itemsFiltered = {skeletoons: [], traits: [], glyphs: []}
         itemsFiltered.traits = itemTemp.traits.filter(trait => traitFilterer(trait))
         //itemTemp.skeletoons = itemsFiltered.skeletoons
-        console.log(itemsFiltered)
         if (selectedDisplay === "Market"){
             itemsFiltered.skeletoons = marketCopy.skeletoons
             itemsFiltered.glyphs = marketCopy.glyphs
@@ -497,7 +488,6 @@ const Market = (prop) => {
             itemsFiltered.glyphs = listedCopy.glyphs
         }
         setFiltered(itemsFiltered)
-        console.log( filtered)
     }
 
 
@@ -512,10 +502,8 @@ const Market = (prop) => {
                 filterFlag = true;
                 filtertemp.trait.type = null; 
             }
-            console.log(filtertemp)
         }
         setFilter(filtertemp)
-        console.log(filter)
         setFilterBool(1)
         filterTraitsDisplay()
 
@@ -542,7 +530,6 @@ const Market = (prop) => {
     }
 
     function getKeyByValueGlyph (value) {
-        console.log("VALUE: " + value )
         let obj = {_512: "background", _256: "pet", _128: "body", _64:"mouth", _32: "head", _16: "eyes", _8: "hat" , _4:"item", _2 : "cape"}
         return Object.keys(obj).find(key => obj[key].includes(value));
     }
@@ -564,7 +551,6 @@ const Market = (prop) => {
             }
 
         }
-        console.log(filterPass)
         return (filterPass === 2)              
       }
     
@@ -582,12 +568,8 @@ const Market = (prop) => {
         if (selectedDisplay === "Listings"){
             itemTemp = listedCopy
         }
-        //FIX img src
-        console.log(itemTemp)
         let itemsFiltered = {skeletoons: [], traits: [], glyphs: []}
         itemsFiltered.glyphs = itemTemp.glyphs.filter(glyph => glyphFilterer(glyph))
-        //itemTemp.skeletoons = itemsFiltered.skeletoons
-        console.log(itemsFiltered)
         if (selectedDisplay === "Market"){
             itemsFiltered.skeletoons = marketCopy.skeletoons
             itemsFiltered.traits = marketCopy.traits
@@ -601,13 +583,11 @@ const Market = (prop) => {
             itemsFiltered.traits = listedCopy.traits
         }
         setFiltered(itemsFiltered)
-        console.log( filtered)
     }
 
     const glyphFilterInput = (str, appliesTo) => {
         let filterFlag = false;
         let filtertemp = filter
-        console.log( str , appliesTo)
         // jei null pakeist str i 0, jei 100+ pakeist i 100
         if (str !== null) {
             filtertemp.glyph.strength = str
@@ -615,7 +595,6 @@ const Market = (prop) => {
                 filterFlag = true;
                 filtertemp.glyph.strength = null; 
             }
-            console.log(filtertemp)
         }
         if (appliesTo !== null) {
             filtertemp.glyph.applies = getKeyByValueGlyph(appliesTo.toLowerCase()).substring(1)
@@ -623,10 +602,8 @@ const Market = (prop) => {
                 filterFlag = true;
                 filtertemp.glyph.applies = null; 
             }
-            console.log(filtertemp)
         }
         setFilter(filtertemp)
-        console.log(filter)
         setFilterBool(1)
         filterGlyphsDisplay()
     }
@@ -729,7 +706,6 @@ const Market = (prop) => {
             }
         }
         setCardOpen(1);
-        console.log("INDEX:" + (index  + (14*page)))
         let card = {NFTtype: null, tokenID: null, properties: []}
         card.NFTtype = NFType
         card.tokenID = tokenId
@@ -781,7 +757,7 @@ const Market = (prop) => {
             <img src={parseInt(item.id) <= 10000 ? gen1Placeholder : gen2Placeholder }></img>
              {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"}
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.skeletoons.length
         }
@@ -791,7 +767,7 @@ const Market = (prop) => {
             <img src={(traitInv + "/"+item.typeId + ".png")}></img>
              {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"} 
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.traits.length
         }
@@ -801,11 +777,10 @@ const Market = (prop) => {
             <img src={glyphInv + "/" + item.appliesTo + ".png"}></img>
              {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"} 
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.glyphs.length
         }
-        console.log(pagedNFT)
 
         //add cost into card bellow name
         
@@ -860,7 +835,6 @@ const Market = (prop) => {
              </div>)
              length = displayArr.glyphs.length
         }
-        console.log(pagedNFT)
 
         //add cost into card bellow name
         
@@ -897,7 +871,7 @@ const Market = (prop) => {
             <img src={parseInt(item.id) <= 10000 ? gen1Placeholder : gen2Placeholder }></img>
             {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"} 
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.skeletoons.length
         }
@@ -907,7 +881,7 @@ const Market = (prop) => {
             <img src={(traitInv + "/"+item.typeId + ".png")}></img>
             {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"}  
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.traits.length
         }
@@ -917,11 +891,10 @@ const Market = (prop) => {
             <img src={glyphInv + "/" + item.appliesTo + ".png"}></img>
             {"Token Id: " + item.id}
              <br></br> 
-             {"Price: " + web3.utils.fromWei(item.price) + " FTM"} 
+             {item.price !== null  && item.price !== undefined ? "Price: " + web3.utils.fromWei(item.price) + " FTM" : "Error Requesting price"}
              </div>)
              length = displayArr.glyphs.length
         }
-        console.log(pagedNFT)
 
         //add cost into card bellow name
         

@@ -36,7 +36,7 @@ const NFTcard = (prop) => {
     const [isApproved, setApproval] = useState(0);
     const [price, setPrice] = useState(null);
     const [seller, setSeller] = useState(null);
-    const [salePrice, setSalePrice] = useState(null);
+    const [salePrice, setSalePrice] = useState("0");
 
     const web3 = new Web3(Web3.givenProvider);
     
@@ -65,7 +65,6 @@ const NFTcard = (prop) => {
     let TWBrewardMultis = [2, 1];
 
     const padder = (input) => {
-        console.log(prop.card)
         if (typeof input === "string"){let padded = input
         for (let i = 54 - padded.length; i >0 ; i--){
             padded = "0" + padded
@@ -97,7 +96,6 @@ const NFTcard = (prop) => {
                 RewardString += tempString;
               } 
         }
-        console.log(totalRewards);
         return RewardString;
       };
     
@@ -172,7 +170,6 @@ const NFTcard = (prop) => {
                 appliedPos[9-i] = false;
             }
           }
-          console.log(appliedPos)
           const iconFiltered = icons.filter( item => appliedPos[icons.indexOf(item)]).map((gene, index) => (
             <il class={"GeneRow"} id={"Gene" + listToGeneIndexer(index)} key={gene}>
               <img src={gene}></img>
@@ -228,7 +225,8 @@ const NFTcard = (prop) => {
         if (prop.card.NFTtype === "Skeletoon") {
           address = "0"
         }
-        let txData = cTWMarket.methods.createMarketItem(address, prop.card.tokenID, salePrice).encodeABI();
+        if (salePrice !== "0")
+        {let txData = cTWMarket.methods.createMarketItem(address, prop.card.tokenID, salePrice).encodeABI();
         web3.eth.sendTransaction(
           {
             from: prop.address,
@@ -237,7 +235,7 @@ const NFTcard = (prop) => {
             data: txData,
           }).on('receipt', function(receipt) {
   
-          });
+          });}
       }
 
     const approveForSale  = () => {
@@ -328,19 +326,24 @@ const NFTcard = (prop) => {
         if (marketRender === "List") {
             return (
                 <>
-                <input class={"StrengthInput"} id={"PriceInput"} type="number" placeholder={"Price: 0.00 FTM"} onChange={e => {setSalePrice(web3.utils.toWei(e.target.value))}}/>
-                {isApproved === 1 && salePrice !== null? 
+                <input class={"StrengthInput"} id={"PriceInput"} type="number" placeholder={"Price: 0.00 FTM"} onChange={e => {  setSalePrice(web3.utils.toWei(e.target.value))
+                  }}/>
+                {isApproved === 1 && salePrice !== "0"? 
                 <button class={"FilterBtn"} id={"MarketBtn"} onClick={() => {
                     listItem()
                 }}>
                 {"List on market"}
                 </button>
                 :
-                <button class={"FilterBtn"} id={"MarketBtn"} onClick={() => {
-                    approveForSale()
-                }}>
-                {"Approve for sale"}
-                </button>
+                <></>
+                }
+                {isApproved === 0 ?
+                  <button class={"FilterBtn"} id={"MarketBtn"} onClick={() => {
+                      approveForSale()
+                  }}>
+                  {"Approve for sale"}
+                  </button>
+                  :<></>
                 }
                 </>
             )
@@ -398,7 +401,6 @@ const NFTcard = (prop) => {
     if (prop.card.marketID !== null) {
         cTWMarket.methods.fetchSingle(prop.card.marketID).call(async (err,result) => { 
             if (!err){
-                console.log(result)
                 if (result[3].toLowerCase() === prop.address){
                     setMarketRender("Cancel")
                     setPrice(result[5])

@@ -87,7 +87,7 @@ export const getGenes = (tokenId) => {
     let gene
     cTWSP.methods.getGenes(tokenId).call(async(err, result) =>{
         if (!err)
-        {    console.log( result)
+        {    
             gene = await result;}
         else 
         {console.log(err)}
@@ -99,7 +99,7 @@ export const getStrength = (tokenId) => {
     let str
     cTWSP.methods.getStrength(tokenId).call(async(err, result) =>{
         if (!err)
-        {   console.log( result)
+        {   
             str = await result;}
         else 
         {console.log(err)}
