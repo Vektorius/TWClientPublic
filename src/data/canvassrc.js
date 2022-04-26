@@ -1,16 +1,16 @@
-const uibatch = "https://ipfs.io/ipfs/QmZzh44V4w3nvbQFLVYeJr7ghoGqLWAoLw6cUAaMA7dW1g/"
-export const header_logo = "https://ipfs.io/ipfs/QmVbp67JMUyh1J5Hezj7ZLcVAW2iihNpbgVViPX3t3R71P"
-export const background_default = "https://ipfs.io/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Background_Default.png";
+const uibatch = "https://spookyskeletoons.mypinata.cloud/ipfs/QmZzh44V4w3nvbQFLVYeJr7ghoGqLWAoLw6cUAaMA7dW1g/"
+export const header_logo = "https://spookyskeletoons.mypinata.cloud/ipfs/QmVbp67JMUyh1J5Hezj7ZLcVAW2iihNpbgVViPX3t3R71P"
+export const background_default = "https://spookyskeletoons.mypinata.cloud/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Background_Default.png";
 export const button_default = uibatch + "button_light.png"
-export const tombstone_default = "https://ipfs.io/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Toonstone_Default.png";
-export const meniu_default = "https://ipfs.io/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Meniu_Default.png";
+export const tombstone_default = "https://spookyskeletoons.mypinata.cloud/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Toonstone_Default.png";
+export const meniu_default = "https://spookyskeletoons.mypinata.cloud/ipfs/QmUvJShUxF9x6jyQxWMwY6FYmor7hjvqBSgvXZiRw9hMuY/Meniu_Default.png";
 export const header = "";
-export const gen1Placeholder = "https://ipfs.io/ipfs/QmPzzuHgbbLReN537PL5QugF66t4eoY9qAcw4MkNTLuAin"
-export const gen2Placeholder = "https://ipfs.io/ipfs/QmbYRqLdrPxJ9G3n3bXnuhy9Zz2cHMqkMyBMSDA6oohvxQ"
+export const gen1Placeholder = "https://spookyskeletoons.mypinata.cloud/ipfs/QmPzzuHgbbLReN537PL5QugF66t4eoY9qAcw4MkNTLuAin"
+export const gen2Placeholder = "https://spookyskeletoons.mypinata.cloud/ipfs/QmbYRqLdrPxJ9G3n3bXnuhy9Zz2cHMqkMyBMSDA6oohvxQ"
 
-export const traitInv = "https://ipfs.io/ipfs/QmSQLno2WXtgZ9bhV8TokkLFJj4ot5qRjiSqyGp8XjsrQK"
+export const traitInv = "https://spookyskeletoons.mypinata.cloud/ipfs/QmSQLno2WXtgZ9bhV8TokkLFJj4ot5qRjiSqyGp8XjsrQK"
 
-export const glyphInv = "https://ipfs.io/ipfs/QmTMcnJv4mufW4r68xAYcujL4yt1dxGQbYtYcgdAfMEwnw"
+export const glyphInv = "https://spookyskeletoons.mypinata.cloud/ipfs/QmTMcnJv4mufW4r68xAYcujL4yt1dxGQbYtYcgdAfMEwnw"
 
 export const button_dark = uibatch + "button_dark.png"
 export const button_mini = uibatch + "button_mini.png" 

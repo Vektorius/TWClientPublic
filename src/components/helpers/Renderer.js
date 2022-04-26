@@ -1,6 +1,6 @@
 import TraitMap from "./TraitMap.json"
 
-const imageURL = "https://ipfs.io/ipfs/QmSRtP9kFubbY9LUqzWsXLk4TQDWUsbcphZdUeuBKgawcJ/";
+const imageURL = "https://spookyskeletoons.mypinata.cloud/ipfs/QmSRtP9kFubbY9LUqzWsXLk4TQDWUsbcphZdUeuBKgawcJ/";
 //const imageURL = "../renderComponents/skeletoons/";
 
 export const drawSingleCanvas = (URL, canvasID) => {
