@@ -518,7 +518,7 @@ const Upgrade = (prop) => {
     let temp = parseInt(glyph.type)
     let tempgeneindex = selectedGeneIndex
     if (selectedGeneIndex % 2 == 1) 
-    {tempgeneindex--} else
+    {tempgeneindex--}
 
       return (parseInt(Math.floor(temp/(2**((18-tempgeneindex)/2)))%2) )
   }

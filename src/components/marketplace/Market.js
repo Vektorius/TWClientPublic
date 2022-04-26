@@ -597,7 +597,11 @@ const Market = (prop) => {
             }
         }
         if (appliesTo !== null) {
-            filtertemp.glyph.applies = getKeyByValueGlyph(appliesTo.toLowerCase()).substring(1)
+            let tempHelper = getKeyByValueGlyph(appliesTo.toLowerCase())
+            if (typeof tempHelper === "string" && tempHelper.length >1)
+            {
+                filtertemp.glyph.applies = tempHelper.substring(1)
+            }
             if (appliesTo === "") {
                 filterFlag = true;
                 filtertemp.glyph.applies = null; 
