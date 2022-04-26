@@ -1,0 +1,8 @@
+.inventory {
+    width: 405px;
+    height: 530px;
+    background: rgb(75, 69, 69);
+    position: absolute;
+    margin-left: 900px;
+    margin-top: -325px;
+}

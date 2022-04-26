@@ -1,0 +1,67 @@
+#DisplayOGSupply{
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 420px;
+    height: 75px;
+    left: 270px;
+    top: 60px;
+}
+
+#InputBoxMint{
+    position: absolute;
+    
+    width: 420px;
+    height: 75px;
+    left: 270px;
+    top: 140px;
+}
+
+#MintButton{
+    position: absolute;
+    
+    width: 125px;
+    height: 75px;
+    left: 420px;
+    top: 210px;
+}
+
+#ClaimInput{
+    position: absolute;
+    
+    width: 420px;
+    height: 75px;
+    left: 270px;
+    top: 445px;
+}
+
+#ClaimButton{
+    position: absolute;
+    
+    width: 125px;
+    height: 75px;
+    left: 420px;
+    top: 525px;
+}
+
+#InfoBox{
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 420px;
+    height: 150px;
+    left: 270px;
+    top: 290px;
+}
+
+.inputMint {
+    border: 2px solid black;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: rgba(240, 248, 255, 0);
+    text-align: center;
+}
+
+.inputMint::placeholder {
+    color: rgb(80, 60, 94);
+}

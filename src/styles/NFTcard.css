@@ -1,0 +1,96 @@
+#cardDisplay
+{
+    position: absolute;
+    height: 700px;
+    width: 1200px;
+    top: 50px;
+    background: black;
+    left: 240px;
+    border: 5px solid rgb(46, 1, 104);
+    border-radius: 40px;
+}
+
+#market_canvas {
+    position: absolute;
+    border-radius: 40px;
+    width: 500px;
+    height: 500px;
+    left: 15px;
+    top: 15px;
+    
+}
+
+#market_img {
+    position: absolute;
+    border-radius: 40px;
+    width: 500px;
+    height: 500px;
+    left: 15px;
+    top: 15px;
+    background-color: #3b3b3b;
+}
+
+#MarketTraitList {
+    position: absolute;
+    left: 550px;
+    top: 40px;
+    color: rgb(255, 255, 255);;
+}
+
+#MarketBtn {
+    position: absolute;
+    height: 75px;
+    font-size: 18pt;
+    line-height: 25px;
+    width: 250px;
+    left: 550px;
+    top: 550px;
+    border: 5px solid rgb(46, 1, 104);
+}
+
+.ItemPrice {
+    color: white;
+    position: absolute;
+    height: 65px;
+    font-size: 14pt;
+    line-height: 75px;
+    width: 250px;
+    left: 0px;
+    top: 575px;
+    border-radius: 40px;
+}
+
+#PriceInput {
+    color: white;
+    position: absolute;
+    height: 65px;
+    font-size: 14pt;
+    line-height: 75px;
+    width: 250px;
+    left: 235px;
+    top: 550px;
+    border-radius: 40px;
+    border: 5px solid rgb(46, 1, 104);
+}
+
+#GlyphList {
+    position: absolute;
+    left: 550px;
+    top: 40px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+#ItemSeller {
+    color: white;
+    position: absolute;
+    height: 65px;
+    font-size: 8pt;
+    letter-spacing: 1.5px;
+    line-height: 15px;
+    width: 500px;
+    left: 67px;
+    top: 550px;
+    border-radius: 40px;
+    text-align: left;
+}

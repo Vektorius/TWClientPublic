@@ -1,0 +1,76 @@
+.GeneRow {
+    position: relative;
+    list-style-type: none;
+    font-size: small;
+    
+}
+
+.TraitList{
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    padding-top: 20px;
+    position: absolute;
+    text-align: left;
+    column-count: 2;
+    height: 430px;
+    width: 600px;
+    left: 7px;
+    top: 3px;
+}
+
+.TraitList ul{
+    margin-top: 0px;
+    padding-left: 10px;
+}
+
+.RewardsBox {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 650px;
+    
+}
+
+#ActiveRewards{
+    border: 3px outset rgba(39, 53, 39, 0.705);
+    background-color: rgba(47, 92, 45, 0.281);
+  top: 80px;
+  left: 650px;
+}
+
+#PendingRewards{
+    border: 3px outset rgba(83, 36, 36, 0.705);
+    background-color: rgba(100, 36, 36, 0.281);
+ top: 80px;
+ left: 650px;
+}
+
+.GeneText{
+        position: absolute;
+        width: 250px;
+        height: 50px;
+        left: 45px;
+        top: -30px;
+        overflow: auto;
+}
+
+::-webkit-scrollbar{
+    display: block;
+    overflow: auto;
+    height: 2px;
+}
+
+#ProfileHeaderM {
+    color: rgb(63, 15, 109);
+    position: absolute;
+    top: 8px;
+    left: 22px;
+    font-size: 16px;
+}
+
+.rewardNextUnlock{
+    position: absolute;
+    bottom: 5px;
+    padding: 5px;
+    font-size: 12pt;
+}

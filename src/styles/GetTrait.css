@@ -1,0 +1,104 @@
+.DisplayManager
+{
+    position: absolute;
+    
+    width: 950px;
+    height: 62px;
+    top: 80px;
+}
+
+
+#GetTraitDisplay
+{
+    position: absolute;
+    
+    width: 950px;
+    height: 350px;
+    top: 150px;
+}
+
+#SingleViewButton {
+    left: 140px;
+    top: -59px
+}
+
+#TraitListGetTrait {
+    columns: 4;
+    column-gap: 40px;
+    left: 9px;
+    width: 938px;
+    height: 310px;
+}
+
+.SelectedGene {
+    width: 225px;
+    height: 50px;
+}
+
+.GetSingleTrait{
+    width: 245px;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.Validity {
+    position: relative;
+    left: 120px;
+    top: -10px;
+    background-color: rgb(63, 63, 63);
+    border: 3px solid;
+    border-radius: 100%;
+}
+
+.ValidityLong {
+    position: relative;
+    left: 220px;
+    top: -10px;
+    background-color: rgb(63, 63, 63);
+    border: 3px solid;
+    border-radius: 100%;
+}
+
+#PreviewCanvasTrait
+{
+    width: 250px;
+    height: 250px;
+    
+    top: 80px;
+    left: 15px;
+}
+
+#ButtonsTrait{
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    
+    top: 80px;
+    left: 400px;
+}
+
+#TraitCanvas{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    
+    top: 80px;
+    left: 690px;
+}
+
+#GetTraitDisplay{
+    height: 345px;
+}
+
+.TextHeaderDiv{
+    position: absolute;
+    top: -23px;
+    font-size: 15px;
+}
+
+#GetTraitSelectedGene{
+    height: 40px;
+}
+
+.GetSingleTrait .GeneText {
+    width: 120px;
+}

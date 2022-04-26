@@ -1,0 +1,256 @@
+.GeneSelector{
+    position: absolute;
+    width: 972px;
+    height: 45px;
+    top: 30px;
+    column-count: 18;
+    column-gap :0px;
+}
+
+.GeneSelector ul{
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+#GeneTextHeader{
+    position: absolute;
+    width: 972px;
+    height: 25px;
+    top: 5px;
+    left: 10px;
+    text-align: left;
+    font-size: 22px;
+}
+
+.GeneRow img:hover{
+    cursor: pointer;
+}
+
+.ActionDisplay {
+    position: absolute;
+
+    width: 972px;
+    height: 415px;
+    top: 80px;
+}
+
+.UpgradeCanvasPreview{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+
+    top: 150px;
+    left: 15px;
+}
+
+.SelectedGene{
+    position: absolute;
+    width: 400px;
+    height: 45px;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    top: 5px;
+    left: 15px;
+    text-align: left;
+}
+
+.UpgradedGene{
+    position: absolute;
+    width: 400px;
+    height: 70px;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    top: 55px;
+    left: 15px;
+    text-align: left;
+}
+
+.ButtonsDisplay {
+    position: absolute;
+    width: 150px;
+    height: 250px;
+
+    top: 150px;
+    left: 270px;
+}
+
+.PointsDisplay {
+    position: absolute;
+    width: 450px;
+    height: 120px;
+    top: 5px;
+    left: 500px;
+    text-align: left;
+}
+
+.TokenSelector {
+    position: absolute;
+    width: 100px;
+    height: 250px;
+
+    top: 150px;
+    left: 500px;
+}
+
+
+.ActionDisplay .GeneText {
+    position: absolute;
+    top: 10px;
+}
+
+.UpgradedGene .GeneText {
+    position: absolute;
+    top: 35px;
+}
+
+.UpgradedGene img {
+    position: absolute;
+    top: 25px;
+}
+
+#skeletoon_preview_canvas{
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+
+.button-wrapper {
+    z-index: 500000;
+}
+
+#PointControl {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 185px;
+    height: 75px;
+    left: 260px;
+}
+
+#PointControl .button-wrapper button{
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    cursor: pointer;
+}
+
+
+#PointControl .button-wrapper  { 
+    width: 50px;
+}
+
+#buttonPlus {
+    position: absolute;
+    left: 135px;
+    top: 17px;
+}
+
+#buttonMinus {
+    position: absolute;
+    top: 17px;
+}
+
+#PointInput {
+    position: absolute;
+    left: 50px;
+    width: 85px;
+    top: 20px;
+    height: 35px;
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+    text-align: center;
+    font-size: 30pt;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#AvailablePoints {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 250px;
+    height: 75px;
+    left: 5px;
+}
+
+#NextPoint {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 250px;
+    top: 80px;
+    height: 35px;
+    left: 5px;
+}
+
+#PointCost {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 185px;
+    top: 80px;
+    height: 35px;
+    left: 260px;
+}
+
+.TokenSelector .btn-group .button-wrapper {
+    left: 0px
+}
+
+
+.TokenInventory {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 250px;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    top: 150px;
+    left: 610px;
+    columns: 7;
+}
+
+.invDiv {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+.TokenInventory ul {
+    position: relative;
+    padding-left: 0px;
+    overflow: auto;
+    margin: 0;
+
+}
+
+.invDiv img{
+    width: 45px;
+    height: 45px;
+}
+
+.invDiv:hover {
+    cursor: pointer;
+    background-color: rgba(102, 102, 102, 0.575);
+}
+
+.selected {
+    width: 41px;
+    height: 41px;
+}
+
+.GlyphIcon{
+    width: 45px;
+    height: 45px;
+}
+
+#UpgradedGeneHeader{
+    font-size: 18px;
+}

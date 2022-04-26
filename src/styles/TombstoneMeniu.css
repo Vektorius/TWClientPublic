@@ -1,0 +1,202 @@
+#tombstoneMeniu_container {
+    position: fixed;
+    
+  }
+
+  #tombstoneMeniu_canvas {
+    position: absolute;
+    margin-top: 27vh;
+    width: 153px;
+    height: 573px;
+    left: 20.4vh;
+    
+  }
+  #tombstoneMeniu_overlay {
+    position: absolute;
+
+    top: 36vh;
+    left: 21vh;
+    width: 130px;
+    height: 490px;
+    overflow: auto;
+    z-index: 2;
+  }
+
+  #innerDiv2 {
+
+    height: 10vh;
+  }
+
+  #tombstoneDisplay_overlay_large {
+    position: absolute;
+
+    top: 2vh;
+    left: 21vw;
+    width: 970px;
+    height: 800px;
+    overflow: auto;
+    z-index: 3;  
+  }
+
+  #tombstoneDisplay_overlay_small {
+    position: absolute;
+
+    top: 330px;
+    left: 21vw;
+    width: 970px;
+    height: 500px;
+    overflow: auto;
+    z-index: 3;  
+  }
+
+
+ 
+
+  #skeletoonProfileDisplay{
+      position: fixed;
+      overflow: hidden;
+      margin-left: 360px;
+      margin-top: -310px;
+      height: 310px;
+  }
+
+  #prev_nav{
+    z-index: 5;
+    left: 1px;
+    top: 120px;
+    padding: 0;
+  }
+
+  #next_nav{
+    z-index: 5;  
+    left: 333px;
+    top: 120px;
+    padding: 0;
+  }
+
+  #middle_nav{
+    left: 180px;
+    top: 1px;
+    z-index: 5;
+  }
+
+
+
+  #skeletoonProfileDisplay_hidden{
+      display: none;
+  }
+
+  #skeletoonProfileDisplay {
+      width: 500px;
+      height: 300px;
+      margin-left: 280px;
+  }
+
+  #skeletoon_profile_canvas{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    left: 80px;
+    top: 33px;
+}
+
+.skeletoonListMini{
+  font-size: 22px;
+  position: absolute;
+  border: 3px outset rgba(110, 110, 110, 0.705);
+  background-color: rgba(85, 85, 85, 0.281);
+  left: 360px;
+  top: 6px;
+  width: 244px;
+  height: 480px;
+  line-height: 25px;
+}
+
+.skeletoonDisplayName{
+    position: absolute;
+    width: 250px;
+    left: 80px;
+    top: 285px;
+    font-size: 20px;
+    
+}
+
+  .miniHeader button {
+    background-color: #a5a5a500;
+    position:absolute;
+    border: none; 
+    cursor: pointer;
+  }
+
+  .miniHeader .bwrap #prev_nav:hover, .miniHeader .bwrap #next_nav:hover {
+    background-color: rgba(82, 82, 82, 0.795);
+    cursor: pointer;
+  }
+
+  .miniHeader #prev_nav,.miniHeader #next_nav {
+
+    position:absolute;
+    background-color: #53535300;
+    border: none; 
+    cursor: pointer;
+
+  }
+
+
+.btn-group button {
+  background-color: #53535300; /* Green background */
+  border: none; /* Green border */
+  color: white; /* White text */
+  z-index: 5000;
+  cursor: pointer; /* Pointer/hand icon */
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button img{
+    cursor: pointer; /* Pointer/hand icon */
+    width: 90px; 
+    height: 45px;/* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+    cursor: pointer;
+  }
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .button-wrapper  { position: relative;
+    width: 90px;
+    left: 18px;
+    margin-top: 12px;
+}
+
+
+.btn-group .button-wrapper:hover  { 
+    background-color: rgba(82, 82, 82, 0.795);
+}
+
+.btn-group .button_text {
+    position: absolute;
+    width: 61px; 
+    height: 39px;/* Set a width if needed */
+    top: 10px;
+    left: 20px;
+    cursor: pointer;
+}
+
+/* Add a background color on hover */
+.btn-group :hover {
+  background-color: #68686800;
+  z-index: 600;
+}
+
+.SkeletoonListItem{
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.skeletoonListMini ul {
+  
+  padding: 0px;
+  margin-top: 35px;
+}

@@ -1,0 +1,84 @@
+#InvGenes{
+    display: none;
+}
+
+.RewardsBox{
+    top: 190px;
+    left: 550px;
+}
+
+#RewardButtons{
+    position: absolute;
+    top: 5px;
+    width: 600px;
+    height: 180px;
+
+    left: 150px;
+}
+
+#RewardsAllButton{
+    position: absolute;
+    width: 300px;
+    height: 180px;
+
+    left: 0px;
+}
+
+#RewardsSingleButton{
+    position: absolute;
+    width: 300px;
+    height: 180px;
+ 
+    left: 400px;
+}
+
+.RewardImg{
+    width: 150px;
+    height: 150px;
+}
+
+.RewardImg:hover{
+box-shadow: 5px;
+cursor: pointer;
+}
+
+#ActiveRewardsAlt{
+    border: 3px outset rgba(39, 53, 39, 0.705);
+    background-color: rgba(47, 92, 45, 0.281);
+
+  }
+  
+#PendingRewardsAlt{
+    border: 3px outset rgba(83, 36, 36, 0.705);
+    background-color: rgba(100, 36, 36, 0.281);
+
+  }
+  
+#Contest{
+    line-height: 30px;
+    border-radius: 15px;
+    background-color: rgba(14, 2, 20, 0.658);
+    left: 145px;
+    border: 5px outset rgb(46, 1, 104);
+}
+
+#Contest:hover{
+    
+    border-radius: 15px;
+    background-color: rgba(65, 7, 94, 0.658);
+    left: 145px;
+    border: 5px outset rgb(46, 1, 104);
+}
+
+#contest_text1{
+    color: white; 
+    font-size: 20px;
+}
+
+
+#contest_text2{
+    position: absolute;
+    bottom: 0px;
+    color: white; 
+    font-size: 25px;
+}

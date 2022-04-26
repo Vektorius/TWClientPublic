@@ -1,0 +1,102 @@
+#TraitSelector {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    width: 200px;
+    height: 494px;
+    left: 20px;
+    top: 296px;
+    background-color: rgba(85, 85, 85, 0.281);
+}
+
+#SummonButtons{
+    position: absolute;
+
+    top: 225px;
+    left: 425px;
+    width: 400px;
+    height: 60px;
+
+}
+
+#SummonCanvas{
+    position: absolute;
+
+    width: 500px;
+    top: 295px;
+    height: 500px;
+    left: 450px;
+}
+
+#SummonInventory{
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 200px;
+    top: 296px;
+    height: 494px;
+    left: 235px;
+}
+
+#TraitSelector ul {
+    text-align: left;
+    padding-left: 10px;
+    overflow: auto;
+}
+
+#SummonInventory ul {
+    margin-top: 40px;
+    text-align: left;
+    padding-left: 10px;
+    overflow: auto;
+}
+
+#skeletoon_summon_canvas {
+    height: 500px;
+    width: 500px;
+}
+
+.GeneRow .GeneTextAlt {
+    position: absolute;
+    width: 100px;
+    left: 50px;
+    top: -15px;
+    font: bold;
+}
+
+#SummonHeader1 {
+    position: absolute;
+    top: 315px;
+    left: 34px;
+    font-size: 22px;
+}
+
+#SummonHeader2 {
+    position: absolute;
+    top: 315px;
+    left: 250px;
+    font-size: 22px;
+}
+
+
+#TraitSelector ul .GeneRow .ValidityLong {
+    position: absolute;
+    left: 150px;
+    top: -20px;
+}
+
+#TraitSelector ul{
+    margin-top: 40px;
+    height: 450px;
+}
+
+.addedTraitToSummon{
+    width: 41px;
+    height: 41px;
+}
+
+#SummonHeaderM {
+    position: absolute;
+    top: 265px;
+    left: 34px;
+    font-size: 20px;
+}

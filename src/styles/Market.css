@@ -1,0 +1,244 @@
+#SelectDisplay {
+    position: absolute;
+    width: 100vw;
+    height: 2200px;
+    top: 63px;
+    background-color: #3b3b3b;
+}
+
+#SelectDisplayBtnGroup {
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    top: 64px;
+    z-index: 2;
+}
+
+#SelectAddressBtnGroup{
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    top: 135px;
+    z-index: 2;
+}
+
+#Filters{
+    position: absolute;
+    overflow: auto;
+    width: 250px;
+    height: 2000px;
+    z-index: 3;
+}
+
+#CardsDisplay{
+    position: fixed;
+    width: 100vw;
+    height: 695px;
+    top: 208px;
+    left: 253px;
+    z-index: 2;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::-webkit-scrollbar{
+    display: none;
+    overflow: auto;
+    height: 2px;
+}
+
+.MarketBtn{
+    position: absolute;
+    padding: 5px;
+    color: white;
+    background-color: #000000;
+    border: 2px solid rgb(46, 1, 104);
+    border-radius: 40px;
+    left: 200px;
+    font-size: 18px;
+    height: 40px;
+    width: auto;
+    padding: 5px;
+}
+
+.MarketBtn:hover{
+    cursor: pointer;
+    background-color: rgba(66, 33, 109, 0.473);
+}
+
+#MarketListings{
+    left: 275px;
+    width: 120px;
+    top: 15px;
+}
+
+#MyInventory{
+    left: 415px;
+    width: 150px;
+    top: 15px;
+}
+
+#MyListings{
+    left: 585px;
+    width: 150px;
+    top: 15px;
+}
+
+#Sold{
+    left: 755px;
+    width: 150px;
+    top: 15px;
+}
+
+#AllNFT{
+    left: 275px;
+    width: 120px;
+    top: 15px; 
+}
+
+#Skeletoons{
+    left: 275px;
+    width: 150px;
+    top: 15px; 
+}
+
+#Traits{
+    left: 445px;
+    width: 120px;
+    top: 15px; 
+}
+
+#Glyphs{
+    left: 585px;
+    width: 120px;
+    top: 15px; 
+}
+
+.FilterBtn{
+    position: absolute;
+    padding: 5px;
+    color: white;
+    background-color: #000000;
+    border: 2px solid rgb(46, 1, 104);
+    border-radius: 40px;
+    left: 10px;
+    font-size: 15px;
+    height: 40px;
+    width: auto;
+    padding: 5px;
+}
+
+.FilterBtn:hover{
+    cursor: pointer;
+    background-color: rgba(66, 33, 109, 0.473);
+}
+
+#HighPrice{
+    left: 125px;
+}
+
+.TraitFilter{
+    color: #ffffff;
+    margin-top: 45px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.TraitFilter ul{
+    padding-left: 5px;
+}
+
+.TraitInput {
+    position: absolute;
+    left: 40px;
+    border: 2px solid rgb(46, 1, 104);
+    color: rgb(255, 255, 255);;
+    border-radius: 40px;
+    background-color: rgba(240, 248, 255, 0);
+    text-align: center;
+    font-size: 10pt;
+}
+
+.StrengthInput {
+    position: absolute;
+    left: 40px;
+    top: -8px;
+    border: 2px solid rgb(46, 1, 104);
+    color: rgb(255, 255, 255);;
+    border-radius: 40px;
+    background-color: rgba(240, 248, 255, 0);
+    text-align: center;
+    font-size: 10pt;
+}
+
+.card{
+    width: 150px;
+    margin: 15px;
+    height: 200px;
+    border: 2px solid rgb(46, 1, 104);
+    color: rgb(255, 255, 255);;
+    border-radius: 40px;
+    background-color: rgb(0, 0, 0);
+    float: left;
+    line-height: 17px;
+}
+
+.card:hover{
+    cursor: pointer;
+    box-shadow: #000000;
+    box-shadow: 2px 5px rgba(46, 1, 104, 0.781);
+}
+
+.card img{
+    width: 150px;
+    height: 150px;
+    border-radius: 38px;
+    background-color: #3b3b3b;
+}
+
+
+#CardsDisplay{
+    width: 1425px;
+}
+
+#PageNav{
+    margin-left: 660px;
+    padding-top: 10px;
+    width: 100px;
+    height: 25px;
+    border: 2px solid rgb(46, 1, 104);
+    border-radius: 40px;
+    background-color: #000000;
+    color: white;
+}
+
+#PageNav button {
+    color: white;
+    background-color: #000000;
+    border: none;
+}
+
+#PageNav button:hover{
+    cursor: pointer;
+    background-color: rgba(66, 33, 109, 0.473);
+}
+
+#CardOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 63px;
+    background-color: #3b3b3b70;
+    z-index: 5;
+}
+
+#closeCard {
+    width: 45px;
+    height: 45px;
+    left: 1400px;
+    border: 5px solid rgb(46, 1, 104);
+}

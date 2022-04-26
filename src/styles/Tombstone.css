@@ -1,0 +1,24 @@
+  #tombstone_container {
+    position: relative;
+    
+  }
+
+  #tombstone_canvas {
+    position: absolute;
+    margin-top: 1vh;
+    width: 1008px;
+    height: 834px;
+    left: 20vw;
+    
+  }
+
+  #connect_wallet_overlay {
+    position: relative;
+    font-size: 30pt;
+    line-height: 40px;
+    width: 400px;
+    height: 200px;
+    left: 39vw;
+    top: 50vh;
+    text-align: center;
+  }
