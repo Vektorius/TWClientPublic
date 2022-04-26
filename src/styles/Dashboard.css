@@ -1,13 +1,13 @@
 #dashboard_container {
     position: relative;
-    margin-top: 7vh;
+    margin-top: 0px;
     
   }
 
   #dashboard_canvas {
     position: absolute;
     width: 100vw;
-    height: 93vh;
+    height: 100vh;
     left: 0%;
   }
 

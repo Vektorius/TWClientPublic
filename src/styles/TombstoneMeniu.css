@@ -7,7 +7,7 @@
     position: absolute;
     margin-top: 27vh;
     width: 153px;
-    height: 573px;
+    height: 582px;
     left: 20.4vh;
     
   }
@@ -41,7 +41,7 @@
   #tombstoneDisplay_overlay_small {
     position: absolute;
 
-    top: 330px;
+    top: 315px;
     left: 21vw;
     width: 970px;
     height: 500px;
@@ -55,9 +55,10 @@
   #skeletoonProfileDisplay{
       position: fixed;
       overflow: hidden;
-      margin-left: 360px;
-      margin-top: -310px;
+      margin-top: -290px;
       height: 310px;
+      width: 500px;
+      margin-left: 280px;
   }
 
   #prev_nav{
@@ -86,11 +87,6 @@
       display: none;
   }
 
-  #skeletoonProfileDisplay {
-      width: 500px;
-      height: 300px;
-      margin-left: 280px;
-  }
 
   #skeletoon_profile_canvas{
     position: absolute;

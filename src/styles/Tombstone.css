@@ -1,13 +1,14 @@
   #tombstone_container {
     position: relative;
+    margin-top: 20px;
     
   }
 
   #tombstone_canvas {
     position: fixed;
-    margin-top: 1vh;
+    margin-top: 32px;
     width: 1008px;
-    height: 834px;
+    height: 780px;
     left: 20vw;
     
   }

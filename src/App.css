@@ -40,7 +40,7 @@
 header {
   width: 100vw;
   max-width: 100vw;
-  min-height: 66px;
+  min-height: 50px;
   position: fixed;
   display: flex;
   -webkit-box-align: center;
@@ -95,7 +95,7 @@ header button {
   color: white;
   background-color: #000000;
   border: 2px solid rgb(46, 1, 104);
-  left: 950px;
+  left: 780px;
 }
 
 #ToonStone:hover{
@@ -116,6 +116,7 @@ header button {
 #logo{
   position: absolute;
   left: 50px;
+  height: 90%;
 }
 
 button{
