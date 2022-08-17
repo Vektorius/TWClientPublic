@@ -27,8 +27,7 @@ import {
   rewardsAll,
   rewardsSingle,
 } from "../../../data/canvassrc";
-import { aTWRewards, cTWRewards } from "../../helpers/Groups";
-// Add rewards by trait, and rewards/ locked rewards on side
+import { aTWRewards, aTWWarsTest, cTWRewards } from "../../helpers/Groups";
 const Rewards = (prop) => {
   const [pendingRewards, setPendingRewards] = useState(0);
   const [timeLocked, setTimeLocked] = useState({dateLock: new Date()});
@@ -61,7 +60,7 @@ const Rewards = (prop) => {
     icon_Item_M,
     icon_Cape_M,
   ];
-  let totalRewards = { TWB: 0, Traits: 0, Glyphs: [] };
+  let totalRewards = { PointsAll: 0, PointsSkelly: 0, PointsZombie: 0, PointsDemon: 0, Glyphs: [] };
   let TWBrewardMultis = [2, 1];
   let rewardClaims;
 
@@ -70,18 +69,31 @@ const Rewards = (prop) => {
   const rewardMapper = (rewardGene, _str) => {
     let str = parseInt(_str);
     let RewardString = "";
-    if (str != "000") {
-      let tempValue = parseInt(str) * parseInt(rewardGene[1]) * TWBrewardMultis[0] * TWBrewardMultis[1];
-      RewardString += tempValue + " $TWB ";
-      totalRewards.TWB += tempValue;
-    }
-    if (rewardGene[0] == 4 || rewardGene[0] == 7) {
-      totalRewards.Traits += str;
+    if ((parseInt(rewardGene[0]) % 10) === 1) {
+      totalRewards.PointsAll += str;
       if (str > 1) {
-        RewardString += str + " Contest Entries";
+        RewardString += str + " Neutral points";
       } 
     }
-    if (rewardGene[0] == 6 || rewardGene[0] == 7) {
+    if ((parseInt(rewardGene[0]) % 10) === 2) {
+      totalRewards.PointsSkelly += str;
+      if (str > 1) {
+        RewardString += str + " Skelly points";
+      } 
+    }
+    if ((parseInt(rewardGene[0]) % 10) === 3) {
+      totalRewards.PointsZombie += str;
+      if (str > 1) {
+        RewardString += str + " Zombie points";
+      } 
+    }
+    if ((parseInt(rewardGene[0]) % 10) === 4) {
+      totalRewards.PointsDemon += str;
+      if (str > 1) {
+        RewardString += str + " Demon points";
+      } 
+    }
+    if (parseInt(rewardGene[0]) > 10) {
       if (Math.floor((str/10)* rewardGene[3]) > 1) {
         let tempString = " [Glyph: " + rewardGene[4] + " (STR: " +Math.floor((str/10)* rewardGene[3]) + ") ]";
         totalRewards.Glyphs.push(tempString.substring(1));
@@ -157,12 +169,16 @@ const Rewards = (prop) => {
       }
       return (
         <div id={"ActiveRewardsAlt"} className={"RewardsBox"}>
-          {"Rewards:"}
+          {"Total Rewards:"}
           <br></br>
           <br></br>
-          {totalRewards.TWB * pendingRewards + " Toonbucks"}
+          {totalRewards.PointsAll * pendingRewards + " Neutral Points"}
           <br></br>
-          {totalRewards.Traits * pendingRewards + " Contest Entries"}
+          {totalRewards.PointsSkelly * pendingRewards + " Skelly Points"}
+          <br></br>
+          {totalRewards.PointsZombie * pendingRewards + " Zombie Points"}
+          <br></br>
+          {totalRewards.PointsDemon * pendingRewards + " Demon Points"}
           <br></br>
           {GlyphStr}
           <br></br>
@@ -178,9 +194,13 @@ const Rewards = (prop) => {
           {"Total Rewards:"}
           <br></br>
           <br></br>
-          {totalRewards.TWB + " Toonbucks"}
+          {totalRewards.PointsAll + " Neutral Points"}
           <br></br>
-          {totalRewards.Traits + " Contest Entries"}
+          {totalRewards.PointsSkelly + " Skelly Points"}
+          <br></br>
+          {totalRewards.PointsZombie + " Zombie Points"}
+          <br></br>
+          {totalRewards.PointsDemon + " Demon Points"}
           <br></br>
           {GlyphStr}
           <div class="rewardNextUnlock">{unlockDateString}</div>
@@ -224,39 +244,24 @@ const Rewards = (prop) => {
   
 
   const claimAll = () => {
-    /*let txData = cTWRewards.methods.claimAllRewards().encodeABI();
-    web3.eth.sendTransaction(
-      {
-        from: prop.address,
-        to: aTWRewards,
-        data: txData,
-      }).on('receipt', function(receipt) {
-        setPendingRewards(0)
-      });*/
-      cTWRewards.methods.allTickets().call((err,result) => {
-        if (!err) {
-          setAllTickets(result)
-          cTWRewards.methods.getPersonalTickets(prop.skeletoonTokenId).call((er, result) => {
-            if (!err) {
-            setPersonalTickerts(result)
-          }
-          })
-        }
-      })
+
+
   }
 
-  const claimSingle = () => {
+  const claimSingle = async () => {
     let skeletoonID = prop.skeletoonTokenId;
-    // check if approve trait all needed, check if approve all glyph needed, check if payed or not,
       let txData = cTWRewards.methods.claimSingleReward(skeletoonID).encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
-          to: aTWRewards,
+          to: aTWWarsTest,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           setPendingRewards(0)
         });
+      })
 
   }
 

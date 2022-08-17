@@ -35,7 +35,6 @@ import { aTWG, aTWLogic, aTWT, cTWG, cTWLogic, cTWSP, cTWT } from '../../helpers
 import { displayLoader } from '../../helpers/Loader';
 
 
-// Select trait, add relevant items, send TX , preview for upgrade
 const Upgrade = (prop) => {
   const [selectedGeneIndex, setselectedGeneIndex] = useState(null); // Req for TX
   const [usedPoints, setUsedPoints] = useState(0) //  Req for TX
@@ -151,7 +150,7 @@ const Upgrade = (prop) => {
     let pStr
     if (selectedTrait != "0"){
       pGene = changeGeneSeq();
-      pStr = changeStrSeqSwap
+      pStr = changeStrSeqSwap();
     } else {
       pGene = prop.geneSeq
       pStr = changeStrSeq();
@@ -186,8 +185,7 @@ const Upgrade = (prop) => {
       <canvas id="skeletoon_preview_canvas" width="2000" height="2000"></canvas>
     )
   }
-  // Need prop to update on sending TX
-  const sendTX = () => {
+  const sendTX = async () => {
     let approvals = approvalState;
     let position = selectedGeneIndex;
     let points = usedPoints;
@@ -196,50 +194,61 @@ const Upgrade = (prop) => {
     let glyphID = selectedGlyph;
     let traitID = selectedTrait;
     let skeletoonID = prop.skeletoonTokenId;
-    // check if approve trait all needed, check if approve all glyph needed, check if payed or not,
     if (selectedTrait != "0" && (approvals % 2) == 0){
       let txData = cTWT.methods.setApprovalForAll(aTWLogic, "1").encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWT,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           setApprovalState(approvals+1)
         });
+      })
     } else 
     if (selectedGlyph != "0" && approvals < 2){
       let txData = cTWG.methods.setApprovalForAll(aTWLogic, "1").encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWG,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           setApprovalState(approvals+2)
         });
+      })
     } else 
     if (parseInt(points) > parseInt(pointsFree)){
       let txData = cTWLogic.methods.upgradeSkeletoonPayed(skeletoonID.toString(), glyphID, traitID, points, position).encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWLogic,
           value: ((parseInt(points) - parseInt(pointsFree)) * (parseInt(web3.utils.toWei(costPerPoint)))).toString(),
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           // ???
         });
+      })
     } else {
       let txData = cTWLogic.methods.upgradeSkeletoon(skeletoonID.toString(), glyphID, traitID, points, position).encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWLogic,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           // ???
         });
+      })
     }
   }
 
@@ -366,10 +375,10 @@ const Upgrade = (prop) => {
     )
   }
 
-  // FIX case: has n points, adds x*10+y points where x<n, shows no cost
+
   const pointCostDisplay = () => {
         let boughtPoints = parseInt(usedPoints) - parseInt(availablePoints)
-        if (usedPoints < availablePoints)
+        if (parseInt(usedPoints) < parseInt(availablePoints))
         {
           return (
           <div id={"PointCost"}>
@@ -407,7 +416,6 @@ const Upgrade = (prop) => {
 
   const traitBalance = () => {
     if (fetching != "None" ){
-      //Throw Error to Div
       return;
     }
     setInventoryState("Trait")
@@ -437,7 +445,6 @@ const Upgrade = (prop) => {
 
   const glyphBalance = () => {
     if (fetching != "None"){
-      //Throw Error to Div
       return;
     }
     setInventoryState("Glyph")
@@ -488,7 +495,6 @@ const Upgrade = (prop) => {
   }
 
   const tokenSelector = () => {
-    //Fix img SRc for trait/glyph
     
     return (
       <div class="btn-group">
@@ -512,7 +518,6 @@ const Upgrade = (prop) => {
   }
 
 
-  //Pasidaryt koki nors smart konverteri kaip su glyph applies
   function filterTrait(trait) {
     let temp = trait.type
     for (let i = 0 ; i<3 ;i++){
@@ -524,7 +529,6 @@ const Upgrade = (prop) => {
 
   const traitInventoryDisplay = () => {
     let traits = traitIds;
-    // FIX img src
     const inventoryTraitDiv = traits.filter(trait => filterTrait(trait)).map((trait, index) => (
       <il class={"invDiv"} id={"invTrait" + trait.id} key={trait.id}>
         <img src={traitInv + "/"+ trait.type + ".png"} onClick={() => {setSelectedTrait(trait.id)}}></img>
@@ -533,7 +537,6 @@ const Upgrade = (prop) => {
     return (<ul>{inventoryTraitDiv}</ul>)
   }
 
-  //Sugalvot kaip pridet str points
   function filterGlyph(glyph){
     let temp = parseInt(glyph.type)
     let tempgeneindex = selectedGeneIndex
@@ -545,7 +548,6 @@ const Upgrade = (prop) => {
 
   const glyphInventoryDisplay = () => {
     let glyphs = glyphIds;
-    //FIX img src
     const inventoryGlyphDiv = glyphs.filter(glyph => filterGlyph(glyph)).map((glyph, index) => (
       <il class={"invDiv"} id={"invGlyph" + glyph.id} key={glyph.id}>
         <img src={glyphInv + "/" + glyph.type + ".png"} class={"GlyphIcon"} onClick={() => {setSelectedGlyph(glyph.id)}}></img>

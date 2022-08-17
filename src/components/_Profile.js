@@ -136,12 +136,12 @@ const Profile = (prop) => {
     var img2 = new Image;
     img.onload = function(){
       console.log(img);
-      ctx.drawImage(img,0,0, 300, 300); // Or at whatever offset you like
+      ctx.drawImage(img,0,0, 300, 300); 
     };
     img.src = otherValue;
     img2.onload = function(){
       console.log(img2);
-      ctx.drawImage(img2,0,0,300, 300); // Or at whatever offset you like
+      ctx.drawImage(img2,0,0,300, 300); 
     };
     img2.src = inputValue;
   }

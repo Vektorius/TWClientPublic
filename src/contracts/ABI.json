@@ -3616,22 +3616,12 @@
         },
         {
           "internalType": "address",
-          "name": "_cbucks",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
           "name": "_cskeletoons",
           "type": "address"
         },
         {
-          "internalType": "address",
-          "name": "_addressReward",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_uniswapRouter",
+          "internalType": "address payable",
+          "name": "_lpCollector",
           "type": "address"
         },
         {
@@ -3806,19 +3796,6 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "rewardAddress",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "uint256",
@@ -3924,32 +3901,6 @@
     },
     {
       "inputs": [],
-      "name": "toonBucks",
-      "outputs": [
-        {
-          "internalType": "contract IBucks",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "toonBucksToken",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "traits",
       "outputs": [
         {
@@ -3972,32 +3923,6 @@
       "name": "transferOwnership",
       "outputs": [],
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "uniswapV2Pair",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "uniswapV2Router",
-      "outputs": [
-        {
-          "internalType": "contract IUniswapV2Router02",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -4072,17 +3997,7 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "_ctraits",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
           "name": "_cglyphs",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_cbucks",
           "type": "address"
         },
         {
@@ -4116,17 +4031,17 @@
     {
       "inputs": [
         {
-          "internalType": "uint256",
-          "name": "_glyphAppliesTo",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "manager",
+          "type": "address"
         },
         {
-          "internalType": "uint256",
-          "name": "_traitId",
-          "type": "uint256"
+          "internalType": "bool",
+          "name": "state",
+          "type": "bool"
         }
       ],
-      "name": "addMintedGlyphAppliesTo",
+      "name": "addPointManager",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -4135,75 +4050,33 @@
       "inputs": [
         {
           "internalType": "uint256",
-          "name": "_rewardMulti",
+          "name": "traitType",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "_traitId",
-          "type": "uint256"
-        }
-      ],
-      "name": "addRewardMulti",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_rewardType",
+          "name": "rewardType",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "_traitId",
+          "name": "rewardWeight",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rewardGlyph",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "glyphMulti",
           "type": "uint256"
         }
       ],
-      "name": "addRewardType",
+      "name": "addTraitProperties",
       "outputs": [],
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "allTickets",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_rewardMulti",
-          "type": "uint256"
-        }
-      ],
-      "name": "baseRewardMulti",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "baseToonBuckReward",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -4255,92 +4128,16 @@
       "inputs": [
         {
           "internalType": "uint256",
-          "name": "traitId",
+          "name": "skeletoonTokenId",
           "type": "uint256"
         }
       ],
-      "name": "getGlyphTraitMultiBonus",
+      "name": "getPoints",
       "outputs": [
         {
-          "internalType": "uint256",
+          "internalType": "uint256[]",
           "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "traitId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getMintedGlyphAppliesTo",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getPersonalTickets",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "traitId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getRewardMulti",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "traitId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getRewardType",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
+          "type": "uint256[]"
         }
       ],
       "stateMutability": "view",
@@ -4360,6 +4157,25 @@
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "traitType",
+          "type": "uint256"
+        }
+      ],
+      "name": "getTraitProperties",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
         }
       ],
       "stateMutability": "view",
@@ -4392,39 +4208,31 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "renounceOwnership",
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "points",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "pointType",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "pointSpender",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [],
-      "name": "rewardMulti",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_rewardMulti",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_traitId",
-          "type": "uint256"
-        }
-      ],
-      "name": "setGlyphTraitMultiBonus",
+      "name": "renounceOwnership",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -4469,32 +4277,6 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "toonBucks",
-      "outputs": [
-        {
-          "internalType": "contract IBucks",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "traits",
-      "outputs": [
-        {
-          "internalType": "contract ITrait",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "address",
@@ -4523,22 +4305,7 @@
         },
         {
           "internalType": "address",
-          "name": "_cbucks",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
           "name": "_cskeletoons",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_addressReward",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "_uniswapRouter",
           "type": "address"
         }
       ],
@@ -4695,7 +4462,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct SkellyMarket.MarketItem[]",
+          "internalType": "struct ToonworldMarket.MarketItem[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -4745,7 +4512,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct SkellyMarket.MarketItem[]",
+          "internalType": "struct ToonworldMarket.MarketItem[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -4795,7 +4562,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct SkellyMarket.MarketItem[]",
+          "internalType": "struct ToonworldMarket.MarketItem[]",
           "name": "",
           "type": "tuple[]"
         }
@@ -4851,7 +4618,7 @@
               "type": "uint256"
             }
           ],
-          "internalType": "struct SkellyMarket.MarketItem",
+          "internalType": "struct ToonworldMarket.MarketItem",
           "name": "",
           "type": "tuple"
         }
@@ -4875,19 +4642,6 @@
     {
       "inputs": [],
       "name": "glyphs",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "rewardAddress",
       "outputs": [
         {
           "internalType": "address",
@@ -4932,62 +4686,10 @@
     },
     {
       "inputs": [],
-      "name": "toonBucks",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "toonBucksContract",
-      "outputs": [
-        {
-          "internalType": "contract IBucks",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
       "name": "traits",
       "outputs": [
         {
           "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "uniswapV2Pair",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "uniswapV2Router",
-      "outputs": [
-        {
-          "internalType": "contract IUniswapV2Router02",
           "name": "",
           "type": "address"
         }
@@ -5837,5 +5539,475 @@
       "stateMutability": "payable",
       "type": "function"
     }
+  ],
+  "StarterPackPRomo": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "skeletoonTokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimSingleReward",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "glyphs",
+      "outputs": [
+        {
+          "internalType": "contract IGlyph",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "skeletoons",
+      "outputs": [
+        {
+          "internalType": "contract ISkeletoon",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "traits",
+      "outputs": [
+        {
+          "internalType": "contract ITrait",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "TWWars" : [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_crewards",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_cskeletoons",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_cfractionReward",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "spTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "points",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "attacked",
+          "type": "address"
+        }
+      ],
+      "name": "attackPoints",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "fraction",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeFraction",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "demonFractionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "demonFractionPoints",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "endSeason",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "spTokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "points",
+          "type": "uint256"
+        }
+      ],
+      "name": "fortifyPoints",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fractionReward",
+      "outputs": [
+        {
+          "internalType": "contract IFractionReward",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "offset",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBatchWalletProperties",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "wallet",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "fraction",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "points",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ToonWorldWarsV1_0.ActiveGameWallet[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "getProfilePicture",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "getWalletProperties",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewards",
+      "outputs": [
+        {
+          "internalType": "contract IReward",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "spTokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "setProfilePicture",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "skeletoonFractionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "skeletoonFractionPoints",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "skeletoons",
+      "outputs": [
+        {
+          "internalType": "contract ISkeletoon",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "walletsInGame",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "zombieFractionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "zombieFractionPoints",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
   ]
+
 }

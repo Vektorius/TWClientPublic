@@ -17,48 +17,53 @@ const Mint = (prop) => {
   const [SPSKsupply, setSPSKsupply] = useState(null);
   const [claimedTokens, setClaimedTokens] = useState([]);
   const [mintAmount, setMintAmount] = useState(null);
+  const [price, setPrice] = useState("0");
 
-  const contractSPSK = ctestnetSPSK;
+  const contractSPSK = cSPSK;
   const contractTWSP = cTWSP;
 
   const web3 = new Web3(Web3.givenProvider);
 
   const mintTX = () => {
 
-    // check if approve trait all needed, check if approve all glyph needed, check if payed or not,
-    contractSPSK.methods.getPrice().call((err, result) => {
+    contractSPSK.methods.getPrice().call(async (err, result) => {
       if (!err)
       {
         let price = web3.utils.fromWei(result, 'ether')
         let priceInt = parseInt(price) * parseInt(mintAmount)
         price = web3.utils.toWei(priceInt.toString())
         let txData = contractSPSK.methods.mint(prop.address, mintAmount).encodeABI();
+        web3.eth.getGasPrice(function (error, result){
         web3.eth.sendTransaction(
           {
             from: prop.address,
             to: aSPSK,
             value: price,
             data: txData,
+            gasPrice: result
           }).on('receipt', function(receipt) {
             balanceSPSK()
             fetchSPSKbalance()
           });
+        })
       }
     })
   }
 
-  const claimTX = () => {
+  const claimTX = async () => {
 
-    // check if approve trait all needed, check if approve all glyph needed, check if payed or not,
     let txData = contractTWSP.methods.claim(claimedTokens).encodeABI();
+    web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWSP,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           
         });
+      })
   }
 
   const balanceSPSK = () => {
@@ -73,14 +78,12 @@ const Mint = (prop) => {
   }
 
   const calcCost = () => {
-    /*
-    contractSPSK.methods.getPrice().call((err,result) => {
-      if(!err){
-        return result
-      } else {
-        return err
-      }
-    })*/
+    if (mintAmount!== null)
+    {
+      return (
+        (parseInt(web3.utils.fromWei(price, 'ether')) * parseInt(mintAmount)).toString()
+      )
+    } else return ""
   }
 
   const mintOriginal = () => {
@@ -146,11 +149,6 @@ const Mint = (prop) => {
         {SPSKbalance.length > 0 ? "You have " + SPSKbalance.length + " ToonWorld Skeletoons that you can claim, with Ids: [" + SPSKbalance + "] Enter Token Id or Amount of tokens that you wish to claim bellow and click \"Claim\"" : "You have no ToonWorld Skeletoons that can be claimed. Mint Spooky Skeletoon and claim your ToonWorld Skeletoon "}
         <br></br>
         <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
         {SPSKbalance.length > 0 ?"Token IDs: ~~~~~~OR~~~~~~ Token Amount:": ""}
       </div>
     )
@@ -180,6 +178,12 @@ const Mint = (prop) => {
   useEffect( () => {
     fetchSPSKbalance()
     balanceSPSK()
+    contractSPSK.methods.getPrice().call((err, result) => {
+      if (!err)
+      {
+        setPrice(result);
+      }
+    })
   },[prop.address])
 
   return (

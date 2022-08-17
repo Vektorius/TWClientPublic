@@ -1,0 +1,272 @@
+#Controler {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    width: 300px;
+    height: 750px;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+.Fraction {
+    position: absolute;
+    width: 300px;
+    height: 750px;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+#SFraction {
+    color: rgb(255, 255, 255);
+    left: 350px;
+    border: 3px outset rgba(20, 20, 20, 0.705);
+    background-color: rgba(187, 187, 187, 0.281);
+}
+
+#ZFraction {
+    color: rgb(255, 255, 255);
+    left: 660px;
+    border: 3px outset rgba(83, 114, 76, 0.705);
+    background-color: rgba(37, 71, 36, 0.281);
+}
+
+#DFraction {
+    color: rgb(255, 255, 255);
+    left: 970px;
+    border: 3px outset rgba(128, 64, 64, 0.705);
+    background-color: rgba(83, 23, 23, 0.281);
+}
+
+#skeletoon_pfp_canvas{
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+}
+
+#PointControler {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    width: 185px;
+    height: 75px;
+    left: 57px;
+    
+}
+
+#PointControler .button-wrapper button{
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    cursor: pointer;
+    
+}
+
+
+#PointControler .button-wrapper  { 
+    width: 50px;
+    
+}
+
+#fortifyButton {
+    top: 70px;
+    left: 100px;
+    z-index: 2;
+    color: black;
+}
+
+.FractionDiv{
+    cursor: pointer;
+}
+
+#CardOverlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 63px;
+    background-color: #3b3b3b70;
+    z-index: 5;
+}
+
+#closeCard {
+    width: 45px;
+    height: 45px;
+    left: 1400px;
+    border: 5px solid rgb(46, 1, 104);
+}
+
+#MyWalletTokens{
+    margin-top: 100px;
+    left: 0px;
+    padding-left: 0px;
+}
+
+.TokenDiv:hover{
+    cursor: pointer;
+}
+
+.FractionLogo {
+    width: 75px;
+    height: 75px;
+}
+
+.FractionLogo:hover {
+    cursor: pointer;
+}
+
+
+#pNavDiv{
+    position: fixed;
+    font-size: 35px;
+    top: 380px;
+    left: 80px;
+    border: 2px outset rgba(110, 110, 110, 0.705);
+}
+
+#nNavDiv{
+    position: fixed;
+    font-size: 35px;
+    top: 380px;
+    left: 250px;
+    border: 2px outset rgba(110, 110, 110, 0.705);
+}
+
+#pNavDiv:hover{
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.281);
+}
+
+#nNavDiv:hover{
+    cursor: pointer;
+    background-color: rgba(85, 85, 85, 0.281);
+}
+
+#ExtraControls{
+    position: absolute;
+    height: 700px;
+    width: 1200px;
+    top: 50px;
+    background: black;
+    left: 240px;
+    border: 5px solid rgb(46, 1, 104);
+    border-radius: 40px;
+}
+
+#pfp_canvas{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+#PFPControls{
+    position: absolute;
+    top: 550px;
+    color: white;
+    left: 50px;
+    border: 5px solid rgb(46, 1, 104);
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#PFPControls:hover{
+    cursor: pointer;
+    background-color: rgba(66, 33, 109, 0.473);
+}
+
+#FractionControls{
+    position: absolute;
+    color: white;
+    left: 600px;
+    top: 200px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+#attacked_canvas{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+#ATKPointControler {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(190, 190, 190, 0.281);
+    width: 185px;
+    height: 75px;
+
+}
+
+#ATKPointControler .button-wrapper button{
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    cursor: pointer;
+}
+
+
+#ATKPointControler .button-wrapper  { 
+    width: 50px;
+}
+
+#AttackControls{
+    position: absolute;
+    color: white;
+    left: 600px;
+    top: 200px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: left;
+}
+
+#attackButton {
+    top: 50px;
+    font-size: 15px;
+    color: black;
+    left: 45px;
+}
+
+#AttackBtnControls {
+    position: absolute;
+    top: 170px;
+    color: white;
+    
+    border: 5px solid rgb(46, 1, 104);
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#AttackBtnControls:hover{
+    cursor: pointer;
+    background-color: rgba(66, 33, 109, 0.473);
+}
+
+
+#wars_container {
+    position: relative;
+    margin-top: 0px;
+    letter-spacing: 0.1em;
+  }
+
+  #wars_background_canvas {
+    position: absolute;
+    left:0;
+  }
+
+  #tombstoneMeniu_overlay {
+    position: absolute;
+
+    overflow: auto;
+    z-index: 1;
+  }
+
+  #MyWalletTokens{
+      height: 200px;
+      overflow: auto;
+  }

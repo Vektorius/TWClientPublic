@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/Dashboard'
 import Web3 from 'web3'
 import { header_logo } from "./data/canvassrc";
 import Market from "./components/marketplace/Market";
+import Wars from "./components/wars/Wars";
 
 
 function App() {
@@ -57,9 +58,30 @@ function App() {
       </button>
        <button class="button-wrapper" id='Market' onClick={() => {
         setPageSelect("Market")
-        }}>{"Marketplace"}
+        }}>{"Inventory/Market"}
+      </button>
+      <button class="button-wrapper" id='Wars' onClick={() => {
+        setPageSelect("Wars")
+        }}>{"ToonWorld Wars"}
       </button>
     </>)
+  }
+
+  const renderDispaly = () => {
+    switch (pageSelect) {
+      case "ToonStone":
+        return (
+            <Dashboard address={currentAccount} chain={currentChain}></Dashboard>
+        )
+      case "Market":
+        return (
+          <Market address={currentAccount} chain={currentChain}> </Market>
+        )
+      case "Wars":
+        return (
+          <Wars address={currentAccount} chain={currentChain}> </Wars>
+        )
+    }
   }
 
   useEffect(() => {
@@ -78,9 +100,7 @@ function App() {
             {actionButtons()}
             {connectWalletButton()}
         </header>
-        { pageSelect == "ToonStone" ?
-        <Dashboard address={currentAccount} chain={currentChain}>
-        </Dashboard> : <Market address={currentAccount} chain={currentChain}> </Market>}
+        {renderDispaly()}
     </div>
   );
 }

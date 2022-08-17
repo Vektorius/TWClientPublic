@@ -61,7 +61,7 @@ const NFTcard = (prop) => {
         icon_Item_M,
         icon_Cape_M,
       ];
-    let totalRewards = { TWB: 0, Traits: 0, Glyphs: [] };
+    let totalRewards = { PointsAll: 0, PointsSkelly: 0, PointsZombie: 0, PointsDemon: 0, Glyphs: [] };
     let TWBrewardMultis = [2, 1];
 
     const padder = (input) => {
@@ -76,28 +76,41 @@ const NFTcard = (prop) => {
     }
 
     const rewardMapper = (rewardGene, _str) => {
-        let str = parseInt(_str);
-        let RewardString = "";
-        if (str != "000") {
-        let tempValue = parseInt(str) * parseInt(rewardGene[1]) * TWBrewardMultis[0] * TWBrewardMultis[1];
-        RewardString += tempValue + " $TWB ";
-        totalRewards.TWB += tempValue;
-        }
-        if (rewardGene[0] == 4 || rewardGene[0] == 7) {
-        totalRewards.Traits += str;
+      let str = parseInt(_str);
+      let RewardString = "";
+      if ((parseInt(rewardGene[0]) % 10) === 1) {
+        totalRewards.PointsAll += str;
         if (str > 1) {
-            RewardString += str + " Contest Entries";
+          RewardString += str + " Neutral points";
         } 
-        }
-        if (rewardGene[0] == 6 || rewardGene[0] == 7) {
-            if (Math.floor((str/10)* rewardGene[3]) > 1) {
-                let tempString = " [Glyph: " + rewardGene[4] + " (STR: " +Math.floor((str/10)* rewardGene[3]) + ") ]";
-                totalRewards.Glyphs.push(tempString.substring(1));
-                RewardString += tempString;
-              } 
-        }
-        return RewardString;
-      };
+      }
+      if ((parseInt(rewardGene[0]) % 10) === 2) {
+        totalRewards.PointsSkelly += str;
+        if (str > 1) {
+          RewardString += str + " Skelly points";
+        } 
+      }
+      if ((parseInt(rewardGene[0]) % 10) === 3) {
+        totalRewards.PointsZombie += str;
+        if (str > 1) {
+          RewardString += str + " Zombie points";
+        } 
+      }
+      if ((parseInt(rewardGene[0]) % 10) === 4) {
+        totalRewards.PointsDemon += str;
+        if (str > 1) {
+          RewardString += str + " Demon points";
+        } 
+      }
+      if (parseInt(rewardGene[0]) > 10) {
+        if (Math.floor((str/10)* rewardGene[3]) > 1) {
+          let tempString = " [Glyph: " + rewardGene[4] + " (STR: " +Math.floor((str/10)* rewardGene[3]) + ") ]";
+          totalRewards.Glyphs.push(tempString.substring(1));
+          RewardString += tempString;
+        } 
+      }
+      return RewardString;
+    };
     
       const geneDisasaemblerMapped = (sequence, index) => {
         let geneSingle = sequence.substring(index, index + 3);
@@ -214,7 +227,7 @@ const NFTcard = (prop) => {
         }
     }
 
-    const listItem  = () => {
+    const listItem  = async () => {
         let address;
         if (prop.card.NFTtype === "Glyph") {
             address = "2"
@@ -227,18 +240,22 @@ const NFTcard = (prop) => {
         }
         if (salePrice !== "0")
         {let txData = cTWMarket.methods.createMarketItem(address, prop.card.tokenID, salePrice).encodeABI();
+        web3.eth.getGasPrice(function (error, result){
         web3.eth.sendTransaction(
           {
             from: prop.address,
             to: aTWMarket,
             value: "0",
             data: txData,
+            gasPrice: result
           }).on('receipt', function(receipt) {
   
-          });}
+          });
+        })
+        }
       }
 
-    const approveForSale  = () => {
+    const approveForSale  = async () => {
         let address;
         let contract;
         if (prop.card.NFTtype === "Glyph") {
@@ -254,17 +271,20 @@ const NFTcard = (prop) => {
           contract = cTWSP
         }
         let txData = contract.methods.approve(aTWMarket, prop.card.tokenID).encodeABI();
+        web3.eth.getGasPrice(function (error, result){
         web3.eth.sendTransaction(
           {
             from: prop.address,
             to: address,
             data: txData,
+            gasPrice: result
           }).on('receipt', function(receipt) {
             setApproval(1)
           });
+        })
       }
 
-    const buyListing  = () => {
+    const buyListing  = async () => {
         let address;
         if (prop.card.NFTtype === "Glyph") {
             address = aTWG
@@ -276,18 +296,21 @@ const NFTcard = (prop) => {
           address = aTWSP
         }
         let txData = cTWMarket.methods.createMarketSale(address, prop.card.marketID).encodeABI();
+        web3.eth.getGasPrice(function (error, result){
         web3.eth.sendTransaction(
           {
             from: prop.address,
             to: aTWMarket,
             value: price,
             data: txData,
+            gasPrice: result
           }).on('receipt', function(receipt) {
   
           });
+        })
       }
 
-    const cancelListing = () => {
+    const cancelListing = async () => {
       let address;
       if (prop.card.NFTtype === "Glyph") {
           address = aTWG
@@ -299,21 +322,26 @@ const NFTcard = (prop) => {
         address = aTWSP
       }
       let txData = cTWMarket.methods.cancelMarketSale(address, prop.card.marketID).encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWMarket,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
 
         });
+      })
     }
+
+
 
     const displayMarket = () => {
         if (marketRender === "Buy" && price !==null) {
             return (
                 <>
-                <div className={"ItemPrice"}>{"Price:" + web3.utils.fromWei(price, 'ether') + "FTM"}</div>
+                <div className={"ItemPrice"}>{price !== undefined && price !== null ? "Price:" + web3.utils.fromWei(price, 'ether') + "FTM" : "Error Getting price"}</div>
                 <div id={"ItemSeller"}>{"Seller: " + seller}</div>
                 <button class={"FilterBtn"} id={"MarketBtn"} onClick={() => {
                     buyListing()
@@ -352,7 +380,7 @@ const NFTcard = (prop) => {
             return (
                 <>
                 <div className={"ItemPrice"}>
-                {"Price:" + web3.utils.fromWei(price, 'ether') + "FTM"}</div>
+                {price !== undefined && price !== null?"Price:" + web3.utils.fromWei(price, 'ether') + "FTM" : "Error Getting Price"}</div>
                 <div id={"ItemSeller"}>{"Seller: " + seller}<br></br>{"(You)"}</div>
                 <button class={"FilterBtn"} id={"MarketBtn"} onClick={() => {
                     cancelListing()

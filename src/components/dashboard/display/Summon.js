@@ -24,7 +24,6 @@ import {
 import { drawSkeletoonFull } from '../../helpers/Renderer';
 import { aTWG, aTWLogic, aTWSP, aTWT, cTWG, cTWLogic, cTWSP, cTWT } from '../../helpers/Groups';
 import { displayLoader } from '../../helpers/Loader';
-// Select each trait send tx
 const Summon = (prop) => {
   const emptyTrait = {id: null, type:"000"}
   const [selectedGeneIndex, setselectedGeneIndex] = useState(0); // Req for TX
@@ -70,38 +69,42 @@ const Summon = (prop) => {
     drawSkeletoonFull(pGene, pStr, 'skeletoon_summon_canvas', 0, 1, 500)
   } 
 
-  const sendTX = () => {
+  const sendTX = async () => {
     let approvals = approvalState;
     let usedTraitIDs = [];
     for (let i=0; i< 9; i++){
       usedTraitIDs[i] = usedTraits[i].id;
     }
-    // check if approve trait all needed, check if approve all glyph needed, check if payed or not,
     if (approvals % 2  === 0){
       let txData = cTWT.methods.setApprovalForAll(aTWLogic, "1").encodeABI();
+      web3.eth.getGasPrice(function (error, result){
       web3.eth.sendTransaction(
         {
           from: prop.address,
           to: aTWT,
           data: txData,
+          gasPrice: result
         }).on('receipt', function(receipt) {
           setApprovalState(1)
         });
+      })
     } else 
     cTWLogic.methods.summonFee().call(async (err, result) => {
 
       if (approvals === 3){
 
         let txData = cTWLogic.methods.summonSkeletoon(usedTraitIDs).encodeABI();
+        web3.eth.getGasPrice(function (error, result){
         web3.eth.sendTransaction(
           {
             from: prop.address,
             to: aTWLogic,
             value: result,
             data: txData,
+            gasPrice: result
           }).on('receipt', function(receipt) {
-            // ???
           });
+        })
       }
     })  
   }
@@ -132,7 +135,6 @@ const Summon = (prop) => {
 
   const traitBalance = () => {
     if (fetching != "None" ){
-      //Throw Error to Div
       return;
     }
     if (traitIds.length > 0){
@@ -185,7 +187,6 @@ const Summon = (prop) => {
 
   const traitInventoryDisplay = () => {
     let traits = traitIds;
-    // FIX img src
     const inventoryTraitDiv = traits.filter(trait => filterTrait(trait)).map((trait, index) => (
       <il class={"invDiv"} id={"invTrait" + trait.id} key={trait.id}>
         <img src={traitInv + "/"+ trait.type + ".png"} onClick={() => {traitSelectedFromInv(trait)}}></img>

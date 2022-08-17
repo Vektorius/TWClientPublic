@@ -17,6 +17,7 @@ import Rewards from './display/Rewards';
 import Summon from './display/Summon';
 import Upgrade from './display/Upgrade';
 import Vote from './display/Vote';
+import StarterPack from './display/StarterPack';
 
 
 const contractAddress = "0x1dadaa7e55b2c7238ed04891ac182ea1468b79b9";
@@ -35,14 +36,12 @@ const TombstoneMeniu = (prop) => {
     const [strength, setStrSeq] = useState(null);
     const [refresh, setRefresh] = useState(false);
 
-    //let geneSequence = "017000012000021000041000043000036011028000000045000000";
-    //let strengthSequence ="017000012000021000041000043000036011028000000045000000";
+
     
 
     const web3 = new Web3(Web3.givenProvider);
 
-    //  Contracts
-    //const contract = new web3.eth.Contract(abi.SPSK, contractAddress);
+
     const contract = cTWSP;
 
     const goodFetcher = () => {
@@ -84,7 +83,7 @@ const TombstoneMeniu = (prop) => {
 
       const meniuButton = (selector, text) => {
           return (
-            <div class="button-wrapper" onClick={() => {setSelectedMeniu(selector)}}>
+            <div class="button-wrapper" id={selector} onClick={() => {setSelectedMeniu(selector)}}>
             <button><img src={button_dark} alt="my image" /></button>
             <div class={"button_text"}>{text}</div>
             </div> 
@@ -149,7 +148,7 @@ const TombstoneMeniu = (prop) => {
           )
       }
 
-      /*   Swap out for Skeletoon builder*/
+
 
       const listToonWorldSkeletoons = () => {
         const listItems = skeletoons.map((token) => (
@@ -206,6 +205,10 @@ const TombstoneMeniu = (prop) => {
                   return (
                       <Vote></Vote>
                   )
+              case "StarterPack":
+                  return (
+                      <StarterPack skeletoonTokenId = {skeletoons[selectedSkeletoonId].id} address = {prop.address}></StarterPack>
+                  )
           }
       }
 
@@ -223,9 +226,10 @@ const TombstoneMeniu = (prop) => {
                 {meniuButton("Upgrade","Upgrade")}   
                 {meniuButton("List","List")}
                 {meniuButton("MintTrait","Extract Trait")} 
+                {meniuButton("StarterPack", "Starter Pack")}
                 </div>: ""}
                 {availableMenius.includes("ToonWorldSpecials") || availableMenius.includes("ShyFeet") || availableMenius.includes("SinfulCreattons") || availableMenius.includes("Skeletoons") || availableMenius.includes("Toonworld Skeletoon Profile")? meniuButton("Rewards","Rewards")  : ""}
-                {availableMenius.includes("Skeletoons") ? meniuButton("Vote","Vote"): ""}
+                
             </div>
           )
       }
@@ -243,7 +247,7 @@ const TombstoneMeniu = (prop) => {
     }, [prop.address]);
 
     useEffect(() => {
-        if (selectedMeniu === "Profile" || selectedMeniu === "Upgrade" || selectedMeniu === "MintTrait" || selectedMeniu === "List" ){
+        if (selectedMeniu === "Profile" || selectedMeniu === "Upgrade" || selectedMeniu === "MintTrait" || selectedMeniu === "List" || selectedMeniu === "StarterPack"){
             setDisplayProfiled(true)
         } else if (selectedMeniu === "Rewards" && availableMenius.includes("Toonworld Skeletoon Profile")){
             setDisplayProfiled(true)
@@ -268,17 +272,23 @@ const TombstoneMeniu = (prop) => {
             cTWSP.methods.getStrength(skeletoons[selectedSkeletoonId].id).call(async(err, result) =>{
                 if (!err)
                 {    
-                    for (let i = 54 - result.length; i >0 ; i--){
-                        result = "0" + result
+                    let strResult = result
+                    for (let i = 54 - strResult.length; i >0 ; i--){
+                      strResult = "0" + strResult
                     }
-                    setStrSeq(result)
+                    setStrSeq(strResult)
                     cTWSP.methods.getGenes(skeletoons[selectedSkeletoonId].id).call(async(err, result) =>{
                       if (!err)
                       {    
-                          for (let i = 54 - result.length; i >0 ; i--){
-                              result = "0" + result
+                          let geneResult = result
+                          for (let i = 54 - geneResult.length; i >0 ; i--){
+                            geneResult = "0" + geneResult
                           }
-                          setGeneSeq(result)
+                          setGeneSeq(geneResult)
+                          var myCanvas = document.getElementById('skeletoon_profile_canvas');
+                          myCanvas.width = 2000;
+                          myCanvas.height = 2000;
+                          drawSkeletoonFull(geneResult, strResult, 'skeletoon_profile_canvas', 0, 2, 250);
                       }
                       else 
                       {console.log(err)}
@@ -288,7 +298,7 @@ const TombstoneMeniu = (prop) => {
                 {console.log(err)}
             })    
         }
-    }, [selectedSkeletoonId ,refresh])
+    }, [selectedSkeletoonId])
 
     useEffect(() => {
         if (areSkeletoonsFetched == 0 && skeletoons.length === 1) {
@@ -297,14 +307,48 @@ const TombstoneMeniu = (prop) => {
         }
     }, [skeletoons])
 
-    useEffect(() => {
+   /* useEffect(() => {
         if (typeof gene === "string" && typeof strength === "string"){
             var myCanvas = document.getElementById('skeletoon_profile_canvas');
             myCanvas.width = 2000;
             myCanvas.height = 2000;
             drawSkeletoonFull(gene, strength, 'skeletoon_profile_canvas', 0, 2, 250);
         }
-    },[gene])
+    },[gene, strength])*/
+
+    useEffect(() => {
+      if (selectedSkeletoonId !== null){
+
+          // Change to get gene and stregth data from on chain
+          
+          cTWSP.methods.getStrength(skeletoons[selectedSkeletoonId].id).call(async(err, result) =>{
+              if (!err)
+              {    
+                  for (let i = 54 - result.length; i >0 ; i--){
+                      result = "0" + result
+                  }
+                  setStrSeq(result)
+                  cTWSP.methods.getGenes(skeletoons[selectedSkeletoonId].id).call(async(err, result) =>{
+                    if (!err)
+                    {    
+                        for (let i = 54 - result.length; i >0 ; i--){
+                            result = "0" + result
+                        }
+                        setGeneSeq(result)
+                        var myCanvas = document.getElementById('skeletoon_profile_canvas');
+                          myCanvas.width = 2000;
+                          myCanvas.height = 2000;
+                          drawSkeletoonFull(gene, strength, 'skeletoon_profile_canvas', 0, 2, 250);
+                    }
+                    else 
+                    {console.log(err)}
+                })
+              }
+              else 
+              {console.log(err)}
+          })    
+      }
+    }, [refresh])
 
 
 

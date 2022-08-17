@@ -1,0 +1,23 @@
+#Pack {
+    position: absolute;
+    border: 3px outset rgba(110, 110, 110, 0.705);
+    background-color: rgba(85, 85, 85, 0.281);
+    top: 50px;
+    left: 25%;
+    width: 50%;
+}
+
+.packImg {
+    width: 75px;
+    height: 75px;
+}
+
+.packImgMini {
+    width: 40px;
+    height: 40px;
+}
+
+#StarterPackClaim {
+    position: absolute;
+    left: 40%;
+}

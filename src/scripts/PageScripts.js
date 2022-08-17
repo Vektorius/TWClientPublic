@@ -5,7 +5,7 @@ import web3 from "web3";
 const { active, account, library, activate, deactivate } = useWeb3React()
 
 export const walletAccess = new InjectedConnector({
-    supportedChainIds: [250, 4002],
+    supportedChainIds: [250],
 });
 
 export async function connect() {

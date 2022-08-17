@@ -91,11 +91,23 @@ header button {
   left: 200px;
 }
 
+#Wars{
+  color: white;
+  background-color: #000000;
+  border: 2px solid rgb(46, 1, 104);
+  left: 200px;
+}
+
+#Wars:hover{
+  cursor: pointer;
+  background-color: rgba(66, 33, 109, 0.473);
+}
+
 #connectWallet{
   color: white;
   background-color: #000000;
   border: 2px solid rgb(46, 1, 104);
-  left: 780px;
+  left: 400px;
 }
 
 #ToonStone:hover{

@@ -8,9 +8,11 @@ export const header = "";
 export const gen1Placeholder = "https://spookyskeletoons.mypinata.cloud/ipfs/QmPzzuHgbbLReN537PL5QugF66t4eoY9qAcw4MkNTLuAin"
 export const gen2Placeholder = "https://spookyskeletoons.mypinata.cloud/ipfs/QmbYRqLdrPxJ9G3n3bXnuhy9Zz2cHMqkMyBMSDA6oohvxQ"
 
-export const traitInv = "https://spookyskeletoons.mypinata.cloud/ipfs/QmSQLno2WXtgZ9bhV8TokkLFJj4ot5qRjiSqyGp8XjsrQK"
+export const traitInv = "https://spookyskeletoons.mypinata.cloud/ipfs/QmUBmZ2ffqE9QR4Z82UoTe3pMRwxZWjTExQgvD5uLB2wgN"
 
 export const glyphInv = "https://spookyskeletoons.mypinata.cloud/ipfs/QmTMcnJv4mufW4r68xAYcujL4yt1dxGQbYtYcgdAfMEwnw"
+
+export const TWWarsUI = "https://spookyskeletoons.mypinata.cloud/ipfs/QmUarFxhCvRLdGDKFVAy22dPjEADEWN6rcXXzEuiLsr6DP/"
 
 export const button_dark = uibatch + "button_dark.png"
 export const button_mini = uibatch + "button_mini.png" 
@@ -55,3 +57,9 @@ export const glyphDefault = uibatch + "glyph.png"
 
 export const rewardsAll = uibatch + "rewards_all.png"
 export const rewardsSingle = uibatch + "rewards_one.png"
+
+export const TWWSkelly = TWWarsUI + "Skelly.png"
+export const TWWZombie = TWWarsUI + "Zombie.png"
+export const TWWDevil = TWWarsUI + "Devil.png"
+
+export const TWWBackgrounds = [ (TWWarsUI + "0.png"), (TWWarsUI + "1.png"), (TWWarsUI + "2.png"), (TWWarsUI + "3.png")]

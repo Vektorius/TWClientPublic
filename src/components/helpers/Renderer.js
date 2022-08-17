@@ -1,7 +1,7 @@
 import TraitMap from "./TraitMap.json"
 
 const imageURL = "https://spookyskeletoons.mypinata.cloud/ipfs/QmSRtP9kFubbY9LUqzWsXLk4TQDWUsbcphZdUeuBKgawcJ/";
-//const imageURL = "../renderComponents/skeletoons/";
+
 
 export const drawSingleCanvas = (URL, canvasID) => {
 
@@ -37,7 +37,7 @@ export const drawSkeletoonFull = (genes, strength, canvasID, indexer, downscaleT
         singleStrD  = strength.substring(( indexer * 2 ) * 3 ,(( indexer * 2 ) + 1 ) * 3)
         singleGeneWhole = genes.substring(( indexer * 2 ) * 3 ,(( indexer * 2 ) + 2 ) * 3)
 
-        //ADD support for 000 traits
+    
 
         if (TraitMap.hasOwnProperty(singleGeneWhole)) {
         breakpoints = Object.keys(TraitMap[singleGeneWhole]).length

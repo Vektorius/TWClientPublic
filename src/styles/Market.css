@@ -82,6 +82,27 @@ input::-webkit-inner-spin-button {
     top: 15px;
 }
 
+#MyListingsSelected{
+    left: 585px;
+    width: 150px;
+    top: 15px;
+    background-color: #360049;
+}
+
+#MarketListingsSelected{
+    left: 275px;
+    width: 120px;
+    top: 15px;
+    background-color: #360049;
+}
+
+#MyInventorySelected{
+    left: 415px;
+    width: 150px;
+    top: 15px;
+    background-color: #360049;
+}
+
 #MyListings{
     left: 585px;
     width: 150px;
@@ -245,3 +266,4 @@ input::-webkit-inner-spin-button {
     left: 1400px;
     border: 5px solid rgb(46, 1, 104);
 }
+

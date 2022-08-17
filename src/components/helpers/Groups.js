@@ -9,17 +9,32 @@ const contractCreatoons = new web3.eth.Contract(abi.Creatoons, "0xF870B0D3022682
 
 export const atestnetSPSK = "0x3780687C770500740F244Ac405824Ca35FD50BA1"
 
-export const aTWSP = "0x4D4391E65D56735AC8802eA4a685549c5D794de1"
-export const aTWT = "0x3476377a802F88D0F2f4A1892d2c7401cC1A782e"
-export const aTWG = "0xF5BEeBbe909E2425099F9B4951D096afac80B21b"
-export const aTWB = "0xF35608EA9e6B06e71dB762373367d5C1d98Ae4Ce"
-export const aTWLogic = "0x8f25C4Ed9E00d70e66c507862E66A5A6110Db93A"
-export const aTWRewards = "0x42055d98CFD0752574978b5088CcB341e9E27e49"
-export const aTWMarket = "0x48c4177d88b12941281d230d26CF226d2802EdCA";
+export const aTWSP = "0xd0885885f066597e0c4f45eBDb56A9B08B22A9A1"
+export const aTWT = "0xAeE90816d6496d84880611Af417802cE855C7949"
+export const aTWG = "0x67b64675EFAA9Bee1902C760aE66DD55ad230730"
+export const aTWB = "0xA71770D9EA591bdFF3a41C20343C609C457aF1fA"
+export const aTWLogic = "0x77413058104341d722Dcc75dF02C1F409a16e536"
+export const aTWRewards = "0xb3474D4859021C13420F8dd226Bfd1a60Fc7e568"
+//export const aTWRewards = "0x3ea41c765Ec14bE31b5a9deF52d1bA6929C5302A"
+export const aTWMarket = "0x96B2FE51a7bC07631633BD32a9671880Cd993f08";
+export const aTWStarter = "0x9Ff5E8942dD3531CCF298e98f928e05bB6494DDf"
+// rewards old 0xe205Bec79f8B371FB1f96Eba1FA0025798afFE3B
+// logic old 0x0CD77416ACf0A247b140C594A435920f05de55A6
+
+export const aTWLogicv2Test = "0x4241F923382eA307a84f8FB20E1fEE16b1852246"
+export const aTWRewardsv2Test = "0x3ea41c765Ec14bE31b5a9deF52d1bA6929C5302A"
+//export const aTWWarsTest = "0x75d518529d93b86e7CAA4C496dfd6580477F9D49"
+export const aTWWarsTest = "0x877d3EE419E3cf66a56D71C83942811670FB934C"
+
+export const aTWSPTest = "0x4d4391e65d56735ac8802ea4a685549c5d794de1"
+export const aTWTTest = "0xa9eba3dadc9f239b032f6b93668b0782a9713d06"
+export const aTWGTest = "0xF5BEeBbe909E2425099F9B4951D096afac80B21b"
 
 export const aSPSK =  "0x1dadaa7e55b2c7238ed04891ac182ea1468b79b9";
 
 export const ctestnetSPSK = new web3.eth.Contract(abi.TestNetSPSK, atestnetSPSK);
+
+export const cTWWars = new web3.eth.Contract(abi.TWWars, aTWWarsTest);
 
 export const cTWSP = new web3.eth.Contract(abi.TWSP, aTWSP);
 export const cTWT = new web3.eth.Contract(abi.TWT,aTWT);
@@ -28,12 +43,13 @@ export const cTWB = new web3.eth.Contract(abi.TWB,aTWB);
 export const cTWLogic = new web3.eth.Contract(abi.TWLogic,aTWLogic);
 export const cTWRewards = new web3.eth.Contract(abi.TWRewards,aTWRewards);
 export const cTWMarket = new web3.eth.Contract(abi.TWMarket, aTWMarket);
+export const cTWStarter = new web3.eth.Contract(abi.StarterPackPRomo, aTWStarter);
 
 export const cSPSK = contractSPSK;
 
 
 
-export const reqChain = 4002;
+export const reqChain = 250;
 
 export const getGroup = (address) => {
     let group = [];
@@ -58,7 +74,7 @@ export const getGroup = (address) => {
             group.push("SinfulCreatoons")
         }
         })
-    //TODO add ToonworldSkeletoons   
+
     cTWSP.methods.balanceOf(address).call(async(err, result) => {
         if (result > 0) {
             group.push("Toonworld Skeletoon Profile")

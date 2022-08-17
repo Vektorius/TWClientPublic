@@ -33,7 +33,6 @@ import {
 import { drawSingleCanvas, drawSkeletoonFull } from '../../helpers/Renderer';
 import { aTWLogic, cTWLogic} from '../../helpers/Groups';
 import { displayLoader } from '../../helpers/Loader';
-// TODO: Show all traits -> Click trait to select for extract -> Send getTrait tx and Prievie for new skeletoon + trait itself
 const GetTrait = (prop) => {
   const [displaySettings, setDisplaySettings] = useState(null);
   const [selectedGeneIndex, setselectedGeneIndex] = useState(null);
@@ -81,7 +80,6 @@ const GetTrait = (prop) => {
      return (prefix+edited+suffix)
   }
 
-  // Do a mapping for trait visuals only (tGene, tStr)
   const drawPreview = () => {
     let selectedGene = selectedGeneIndex
 
@@ -98,20 +96,24 @@ const GetTrait = (prop) => {
     drawSingleCanvas((traitInv + "/"+ geneSingle.substring(1) + ".png"), 'trait_preview_canvas');
   }
 
-  const sendTX = () => {
+  const sendTX = async () => {
     let position = selectedGeneIndex;
     let skeletoonID = prop.skeletoonTokenId;
     if (skeletoonID <= 10000 && parseInt(strDissasermbler(prop.strSeq, position * 3)) == 100 && prop.geneSeq.substring((position*3), (position*3 )+ 3) != "000"){
       let txData = cTWLogic.methods.getGene(skeletoonID, position).encodeABI();
-      web3.eth.sendTransaction(
-        {
-          from: prop.address,
-          to: aTWLogic,
-          data: txData,
-        }).on('receipt', function(receipt) {
-          setMessageStatus("Trait Extracted Successfully")
-        });
+      web3.eth.getGasPrice(function (error, result){
+        web3.eth.sendTransaction(
+          {
+            from: prop.address,
+            to: aTWLogic,
+            data: txData,
+            gasPrice: result
+          }).on('receipt', function(receipt) {
+            setMessageStatus("Trait Extracted Successfully")
+          });
+      })
     }
+    
   }
 
   

@@ -33,7 +33,7 @@ import NFTcard from './NFTcard';
 import Web3 from "web3";
 
 const Market = (prop) => {
-    const [selectedDisplay, setSelectedDisplay] = useState("Market")
+    const [selectedDisplay, setSelectedDisplay] = useState("Inventory")
     const [selectedAddress, setSelectedAddress] = useState("Skeletoons")
     const [filter, setFilter] = useState({base: null, skeletoon: {
         0 : {genes: null, strength:null},
@@ -162,7 +162,7 @@ const Market = (prop) => {
                     if (!err){
                     let market = marketOld
                     for (let i = 0; i < result.length; i= i+3){
-                        let temp = {id: result[i], strength: result[i+1], appliesTo:result[i+2], marketId:glyphsMarketID[i], price: glyphsPrice[i] }
+                        let temp = {id: result[i], strength: result[i+1], appliesTo:result[i+2], marketId:glyphsMarketID[i/3], price: glyphsPrice[i/3] }
                         market.glyphs = [...market.glyphs, temp];
                     } 
                     setMarketItems(market)
@@ -173,12 +173,12 @@ const Market = (prop) => {
       const fetchListedTrait = (marketLeft, marketOld) => {
         let traitIds = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0"))).map(item => item[2])
         let traitsMarketID = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0") )).map(item => item[0])
-        let traitsPrice = marketLeft.filter(item => ((item[1] === aTWSP) && (item[6] === "0") )).map(item => item[5])
+        let traitsPrice = marketLeft.filter(item => ((item[1] === aTWT) && (item[6] === "0") )).map(item => item[5])
                 TWT.methods.getTraitPropertiesBatch(traitIds).call( async (err,result) => {
                     if (!err){
                     let market = marketOld
                     for (let i = 0; i < result.length; i= i+2){
-                        let temp = {id: result[i], typeId: result[i+1], marketId: traitsMarketID[i], price: traitsPrice[i]}
+                        let temp = {id: result[i], typeId: result[i+1], marketId: traitsMarketID[i/2], price: traitsPrice[i/2]}
                         market.traits = [...market.traits, temp];
                     } 
                     setMarketItems(market)
@@ -193,14 +193,14 @@ const Market = (prop) => {
               if (!err){
                 
                 let marketItems = result
-                //---------------------------------------------------------- && (item[6] === "0")
+
                 let skeletoonsMarket = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0"))).map(item => item[2])
                 let skeletoonsMarketID = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0") )).map(item => item[0])
                 let skeletoonsPrice = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0") )).map(item => item[5])
                              
                 contract.methods.getSkeletoonPropertiesBatch(skeletoonsMarket).call( async (err,result) => {
                     for (let i = 0; i < result.length; i= i+3){
-                        let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i], price:skeletoonsPrice[i]}
+                        let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i/3], price:skeletoonsPrice[i/3]}
                         market.skeletoons = [...market.skeletoons, temp];
                     }
                   setMarketItems(market)
@@ -218,7 +218,7 @@ const Market = (prop) => {
             if (!err){
             let market = marketOld
             for (let i = 0; i < result.length; i= i+3){
-                let temp = {id: result[i], strength: result[i+1], appliesTo:result[i+2], marketId:glyphsMarketID[i], price: glyphsPrice[i]}
+                let temp = {id: result[i], strength: result[i+1], appliesTo:result[i+2], marketId:glyphsMarketID[i/3], price: glyphsPrice[i/3]}
                 market.glyphs = [...market.glyphs, temp];
             } 
             setListings(market)
@@ -227,14 +227,14 @@ const Market = (prop) => {
         }
 
         const fetchListingsTrait = (marketLeft, marketOld)  => {
-            let traitIds = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0") &&(item[3].toLowerCase() === prop.address))).map(item => item[0])
-            let traitsMarketID = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0") &&(item[3].toLowerCase() === prop.address))).map(item => item[2])
+            let traitIds = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0") &&(item[3].toLowerCase() === prop.address))).map(item => item[2])
+            let traitsMarketID = marketLeft.filter(item => ((item[1] === aTWT)&& (item[6] === "0") &&(item[3].toLowerCase() === prop.address))).map(item => item[0])
             let traitsPrice = marketLeft.filter(item => ((item[1] === aTWT) && (item[6] === "0") && (item[3].toLowerCase() === prop.address))).map(item => item[5])
                 TWT.methods.getTraitPropertiesBatch(traitIds).call( async (err,result) => {
                     if (!err){
                     let market = marketOld
                     for (let i = 0; i < result.length; i= i+2){
-                        let temp = {id: result[i], typeId: result[i+1], marketId: traitsMarketID[i], price:traitsPrice[i]}
+                        let temp = {id: result[i], typeId: result[i+1], marketId: traitsMarketID[i/2], price:traitsPrice[i/2]}
                         market.traits = [...market.traits, temp];
                     } 
                     setListings(market)
@@ -249,7 +249,7 @@ const Market = (prop) => {
             if (!err){
                 
                 let marketItems = result
-                //---------------------------------------------------------- && (item[6] === "0")
+
                 let skeletoonsMarket = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0") && (item[3].toLowerCase() === prop.address))).map(item => item[2])
                 let skeletoonsMarketID = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0") && (item[3].toLowerCase() === prop.address))).map(item => item[0])
                 let skeletoonsPrice = marketItems.filter(item => ((item[1] === aTWSP) && (item[6] === "0") && (item[3].toLowerCase() === prop.address))).map(item => item[5])
@@ -258,7 +258,7 @@ const Market = (prop) => {
                
                 contract.methods.getSkeletoonPropertiesBatch(skeletoonsMarket).call( async (err,result) => {
                     for (let i = 0; i < result.length; i= i+3){
-                        let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i], price:skeletoonsPrice[i]}
+                        let temp = {id: result[i], gene: result[i+1], str: result[i+2], marketId: skeletoonsMarketID[i/3], price:skeletoonsPrice[i/3]}
                         market.skeletoons = [...market.skeletoons, temp];
                     }
                 setListings(market)
@@ -324,11 +324,11 @@ const Market = (prop) => {
             if (selectedDisplay === "Listings"){
                 itemTemp = listedCopy
             }
-            //FIX img src
+
 
             let itemsFiltered = {skeletoons: [], traits: [], glyphs: []}
             itemsFiltered.skeletoons = itemTemp.skeletoons.filter(skeletoon => skeletoonFilterer(skeletoon))
-            //itemTemp.skeletoons = itemsFiltered.skeletoons
+
 
             if (selectedDisplay === "Market"){
                 itemsFiltered.traits = marketCopy.traits
@@ -345,31 +345,31 @@ const Market = (prop) => {
             setFiltered(itemsFiltered)
         }
 
-        //TEMP
+
     const selectDisplay = () => {
         if (prop.address !== null) {
             return (
                 <div id={"SelectDisplayBtnGroup"}>
-                    <button class={"MarketBtn"} id={"MarketListings"}onClick={() => {
+                    <button class={"MarketBtn"} id={selectedDisplay === "Market" ? "MarketListingsSelected" :"MarketListings"}onClick={() => {
                     setSelectedDisplay("Market")
                     }}>{"Market"}
                     </button>
-                    <button class={"MarketBtn"} id={"MyInventory"} onClick={() => {
+                    <button class={"MarketBtn"} id={selectedDisplay === "Inventory" ? "MyInventorySelected" : "MyInventory"} onClick={() => {
                     setSelectedDisplay("Inventory")
-                    }}>{"My Inventory"}
+                    }}>{"Inventory"}
                     </button>
-                    <button class={"MarketBtn"} id={"MyListings"} onClick={() => {
+                    <button class={"MarketBtn"} id={selectedDisplay === "Listings" ? "MyListingsSelected" : "MyListings"} onClick={() => {
                     setSelectedDisplay("Listings")
                     }}>{"My Listings"}
                     </button>
                 </div>
-            ) 
+            )
         } else {
             return (
                 <div id={"SelectDisplayBtnGroup"}>
                     <button class={"MarketBtn"} id={"MarketListings"}onClick={() => {
-                    setSelectedDisplay("Market")
-                    }}>{"Market"}
+                    setSelectedDisplay("Inventory")
+                    }}>{"Inventory"}
                     </button>
                 </div>
             ) 
@@ -410,7 +410,7 @@ const Market = (prop) => {
         if (position <=8) {
             positionfiltered = parseInt(position*2)
         }
-        // jei null pakeist str i 0, jei 100+ pakeist i 100
+
         if (strValue !== null & strValue <= 100 && strValue >= 0) {
             filtertemp.skeletoon[positionfiltered].strength = strValue
             filterFlag = true;
@@ -443,7 +443,7 @@ const Market = (prop) => {
     
 
     const skeletoonFilter = () => {
-        // list 18 - input search + volume for str
+
         
         return (
           <div className={"TraitFilter"}>
@@ -471,10 +471,10 @@ const Market = (prop) => {
         if (selectedDisplay === "Listings"){
             itemTemp = listedCopy
         }
-        //FIX img src
+
         let itemsFiltered = {skeletoons: [], traits: [], glyphs: []}
         itemsFiltered.traits = itemTemp.traits.filter(trait => traitFilterer(trait))
-        //itemTemp.skeletoons = itemsFiltered.skeletoons
+
         if (selectedDisplay === "Market"){
             itemsFiltered.skeletoons = marketCopy.skeletoons
             itemsFiltered.glyphs = marketCopy.glyphs
@@ -495,7 +495,7 @@ const Market = (prop) => {
     const traitFilterInput = (type) => {
         let filterFlag = false;
         let filtertemp = filter
-        // jei null pakeist str i 0, jei 100+ pakeist i 100
+
         if (type !== null) {
             filtertemp.trait.type = getKeyByValue(TraitMap, type.toLowerCase())
             if (type === "") {
@@ -509,16 +509,11 @@ const Market = (prop) => {
 
     }
 
-    /* Corner Cut  traitFilter
-                <br></br>
-                <br></br>
-                <input class={"TraitInput"} type="text" placeholder={"Trait Type"} onChange={e => {traitFilterInput(null, e.target.value)}}/>
-    
-    */
+
 
 
     const traitFilter = () => {
-        // input type checkbox applies to search bar
+
         return (
             <div className={"TraitFilter"}>
                 {"Search Trait by type or applied position"}
@@ -588,7 +583,6 @@ const Market = (prop) => {
     const glyphFilterInput = (str, appliesTo) => {
         let filterFlag = false;
         let filtertemp = filter
-        // jei null pakeist str i 0, jei 100+ pakeist i 100
         if (str !== null) {
             filtertemp.glyph.strength = str
             if (str === "") {
@@ -651,24 +645,6 @@ const Market = (prop) => {
         filterSkeletoonsDisplay()
     }
 
-    /*
-            <button class={"FilterBtn"} id={"LowPrice"} onClick={() => {
-                
-                filtertemp.base = "MinPrice"
-                setFilter(filtertemp)
-                }}>
-        {"Price - Low"}
-        </button>
-        <button class={"FilterBtn"} id={"HighPrice"} onClick={() => {
-                filtertemp.base = "MaxPrice"
-                setFilter(filtertemp)
-                }}>
-        {"Price - High"}
-        </button>
-        <br></br>
-        <br></br>
-        <br></br>
-    */
 
     const baseFilter = () => {
         let filtertemp = filter
